@@ -8,7 +8,7 @@ public class TextControlScript : MonoBehaviour {
 	public Transform cube;
 	public Transform cap;
 	bool hasReturned = false;
-	bool castUp = false;
+	bool fireUp = false;
 
 
 	// Use this for initialization
@@ -37,15 +37,15 @@ public class TextControlScript : MonoBehaviour {
 		Event e = Event.current;
 		if (e.keyCode == KeyCode.Return){
 			hasReturned = true;
-			castUp = false;
+			fireUp = false;
 		}
 		else if (e.keyCode == KeyCode.Alpha1){
-			castUp = true;
+			fireUp = true;
 			hasReturned = false;
 			stringToEdit = "";
 			GUI.FocusControl("Spellbook");
 		}
-		else if (hasReturned == false && castUp == true)
+		else if (hasReturned == false && fireUp == true)
 			stringToEdit = GUI.TextField(new Rect(10, 10, 200, 20), stringToEdit, 25);
 	}
 }
