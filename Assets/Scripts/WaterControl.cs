@@ -47,7 +47,7 @@ public class WaterControl : MonoBehaviour {
             hasReturned = true;
             WaterUp = false;
         }
-        else if (e.keyCode == KeyCode.Alpha1)
+        else if (e.keyCode == KeyCode.Alpha2)
         {
             WaterUp = true;
             hasReturned = false;

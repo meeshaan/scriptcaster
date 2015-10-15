@@ -47,7 +47,7 @@ public class EarthControl : MonoBehaviour {
             hasReturned = true;
             earthUp = false;
         }
-        else if (e.keyCode == KeyCode.Alpha1)
+        else if (e.keyCode == KeyCode.Alpha4)
         {
             earthUp = true;
             hasReturned = false;

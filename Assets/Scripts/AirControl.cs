@@ -47,7 +47,7 @@ public class AirControl : MonoBehaviour {
             hasReturned = true;
             airUp = false;
         }
-        else if (e.keyCode == KeyCode.Alpha1)
+        else if (e.keyCode == KeyCode.Alpha3)
         {
             airUp = true;
             hasReturned = false;
