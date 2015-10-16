@@ -5,14 +5,18 @@ public class EnemyFollowScript : MonoBehaviour {
 
 	public GameObject Player;
 	public float moveSpeed = 4.0f;
-	public int rotationSpeed = 3;
+	public float rotationSpeed = 3.0f;
+	public float slowPercent = 0.25f;
 
+	private bool isSlow = false;
 	private Vector2 target;
 
-	// Use this for initialization
+	private GameManager gameManager;
+	
 	void Start () 
 	{
-	
+		GameObject Manager = GameObject.Find ("GameManager");
+		gameManager = Manager.GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -21,4 +25,20 @@ public class EnemyFollowScript : MonoBehaviour {
 		target = Player.transform.position;
 		transform.position = Vector2.MoveTowards (transform.position, target, moveSpeed * Time.deltaTime);
 	}
+
+	void FixedUpdate()
+	{
+		if (gameManager.SlowTime && !isSlow) {
+			moveSpeed *= slowPercent;
+			rotationSpeed *= slowPercent;
+			isSlow = true;
+		} else if (!gameManager.SlowTime && isSlow) 
+		{
+			moveSpeed /= slowPercent;
+			rotationSpeed /= slowPercent;
+			isSlow = false;
+		}
+
+	}
+
 }
