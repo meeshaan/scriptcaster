@@ -9,18 +9,30 @@ public class EarthControl : MonoBehaviour {
     public Transform cap;
     bool hasReturned = false;
     bool earthUp = false;
+    public float cooldown;
+    public bool isCooling;
 
 
     // Use this for initialization
     void Start()
     {
-
+        isCooling = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasReturned == true)
+        if (isCooling == true) 
+        {
+            cooldown -= Time.deltaTime;
+        }
+
+        if (cooldown <= 0)
+        {
+            isCooling = false;
+        }
+
+        if (hasReturned == true && isCooling == false)
         {
             if (stringToEdit.ToLower() == "ball")
             {
@@ -36,6 +48,9 @@ public class EarthControl : MonoBehaviour {
             }
             stringToEdit = "";
         }
+        else {
+            //display cooldown
+        }
     }
 
     void OnGUI()
@@ -47,7 +62,7 @@ public class EarthControl : MonoBehaviour {
             hasReturned = true;
             earthUp = false;
         }
-        else if (e.keyCode == KeyCode.Alpha4)
+        else if (e.keyCode == KeyCode.Alpha4 && isCooling == false)
         {
             earthUp = true;
             hasReturned = false;
@@ -55,6 +70,13 @@ public class EarthControl : MonoBehaviour {
             GUI.FocusControl("Spellbook");
         }
         else if (hasReturned == false && earthUp == true)
+        {
             stringToEdit = GUI.TextField(new Rect(10, 10, 200, 20), stringToEdit, 25);
+        }
+
+        if (isCooling) 
+        {
+            GUI.Box(new Rect(10, 10, 200, 20), cooldown.ToString("0"));
+        }
     }
 }
