@@ -15,6 +15,8 @@ public class aaCharController2D : MonoBehaviour {
 	bool grounded = false;
 	bool gravitySwitched = false;
 	public bool isSlow = false;
+
+	Animator spriteAnim;
 	
 	private GameManager gameManager;
 
@@ -22,6 +24,8 @@ public class aaCharController2D : MonoBehaviour {
 	{
 		GameObject Manager = GameObject.Find ("GameManager");
 		gameManager = Manager.GetComponent<GameManager>();
+
+		spriteAnim = this.GetComponentInChildren<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -71,8 +75,9 @@ public class aaCharController2D : MonoBehaviour {
 
 		if (move > 0 && !facingRight) {
 			Flip ();
-		} else if(move < 0 && facingRight){
-			Flip();
+		} else if (move < 0 && facingRight) {
+			Flip ();
+		} else {
 		}
 	}
 
