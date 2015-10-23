@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TextControlScript : MonoBehaviour {
 	
@@ -29,14 +30,24 @@ public class TextControlScript : MonoBehaviour {
     public float airTime;
     public float earthTime;
     float coolTime = 10.0f;
-
+    public SpriteRenderer fireBook;
+    public SpriteRenderer waterBook;
+    public SpriteRenderer airBook;
+    public SpriteRenderer earthBook;
+    public SpriteRenderer openBook;
+    public GUISkin invisibleBox;
+    public Text fireCoolTimer;
+    public Text waterCoolTimer;
+    public Text airCoolTimer;
+    public Text earthCoolTimer;
 
 	// Use this for initialization
 	void Start () {
         fireCool = false;
         waterCool = false;
         airCool = false;
-        earthCool = false;	
+        earthCool = false;
+        openBook.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -47,7 +58,9 @@ public class TextControlScript : MonoBehaviour {
             if (fireTime <= 0)
             {
                 fireCool = false;
+                fireCoolTimer.text = "";
                 fireTime = coolTime;
+                fireBook.sprite = Resources.Load("red book", typeof(Sprite)) as Sprite;
             }
         }
         if (waterCool == true)
@@ -56,7 +69,9 @@ public class TextControlScript : MonoBehaviour {
             if (waterTime <= 0)
             {
                 waterCool = false;
+                waterCoolTimer.text = "";
                 waterTime = coolTime;
+                waterBook.sprite = Resources.Load("blue book", typeof(Sprite)) as Sprite;
             }
         }
         if (airCool == true)
@@ -65,7 +80,9 @@ public class TextControlScript : MonoBehaviour {
             if (airTime <= 0)
             {
                 airCool = false;
+                airCoolTimer.text = "";
                 airTime = coolTime;
+                airBook.sprite = Resources.Load("green book", typeof(Sprite)) as Sprite;
             }
         }
         if (earthCool == true)
@@ -74,7 +91,9 @@ public class TextControlScript : MonoBehaviour {
             if (earthTime <= 0)
             {
                 earthCool = false;
+                earthCoolTimer.text = "";
                 earthTime = coolTime;
+                earthBook.sprite = Resources.Load("yellow book", typeof(Sprite)) as Sprite;
             }
         }
 
@@ -84,6 +103,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,0)));
                 fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 fireCool = true;
+                fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                fireBook.enabled = true;
+                openBook.enabled = false;
 			}
             else if ((currentActive + stringToEdit).ToLower() == "firecube")
             {
@@ -91,6 +113,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform fcube = (Transform)Instantiate(firecube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 fcube.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 fireCool = true;
+                fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                fireBook.enabled = true;
+                openBook.enabled = false;
 			}
             else if ((currentActive + stringToEdit).ToLower() == "firecap")
             {
@@ -98,6 +123,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform fCap = (Transform)Instantiate(firecap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 fCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 fireCool = true;
+                fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                fireBook.enabled = true;
+                openBook.enabled = false;
 			}
             if ((currentActive + stringToEdit).ToLower() == "waterball")
             {
@@ -105,6 +133,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform wBall = (Transform)Instantiate(waterball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 wBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 waterCool = true;
+                waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                waterBook.enabled = true;
+                openBook.enabled = false;
             }
             else if ((currentActive + stringToEdit).ToLower() == "watercube")
             {
@@ -112,6 +143,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform wCube = (Transform)Instantiate(watercube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 wCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 waterCool = true;
+                waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                waterBook.enabled = true;
+                openBook.enabled = false;
 
             }
             else if ((currentActive + stringToEdit).ToLower() == "watercap")
@@ -120,6 +154,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform wCap = (Transform)Instantiate(watercap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 wCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 waterCool = true;
+                waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                waterBook.enabled = true;
+                openBook.enabled = false;
             }
             if ((currentActive + stringToEdit).ToLower() == "airball")
             {
@@ -127,6 +164,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform aBall = (Transform)Instantiate(airball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 airCool = true;
+                airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                airBook.enabled = true;
+                openBook.enabled = false;
             }
             else if ((currentActive + stringToEdit).ToLower() == "aircube")
             {
@@ -134,6 +174,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform aCube = (Transform)Instantiate(aircube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 aCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 airCool = true;
+                airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                airBook.enabled = true;
+                openBook.enabled = false;
             }
             else if ((currentActive + stringToEdit).ToLower() == "aircap")
             {
@@ -141,6 +184,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform aCap = (Transform)Instantiate(aircap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 airCool = true;
+                airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                airBook.enabled = true;
+                openBook.enabled = false;
             }
             if ((currentActive + stringToEdit).ToLower() == "earthball")
             {
@@ -148,6 +194,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform eBall = (Transform)Instantiate(earthball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 eBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 earthCool = true;
+                earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                earthBook.enabled = true;
+                openBook.enabled = false;
             }
             else if ((currentActive + stringToEdit).ToLower() == "earthcube")
             {
@@ -155,6 +204,9 @@ public class TextControlScript : MonoBehaviour {
                 Transform eCube = (Transform)Instantiate(earthcube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 eCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 earthCool = true;
+                earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                earthBook.enabled = true;
+                openBook.enabled = false;
             }
             else if ((currentActive + stringToEdit).ToLower() == "earthcap")
             {
@@ -162,12 +214,63 @@ public class TextControlScript : MonoBehaviour {
                 Transform eCap = (Transform)Instantiate(earthcap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
                 eCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 earthCool = true;
+                earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
+                earthBook.enabled = true;
+                openBook.enabled = false;
             }
 			stringToEdit = "";
+            currentActive = "";
 		}
+
+        if (currentActive == "fire")
+        {
+            fireBook.enabled = false;
+            openBook.sprite = Resources.Load("red book open", typeof(Sprite)) as Sprite;
+            openBook.enabled = true;
+            waterBook.enabled = true;
+            airBook.enabled = true;
+            earthBook.enabled = true;
+        }
+        else if (currentActive == "water")
+        {
+            waterBook.enabled = false;
+            openBook.sprite = Resources.Load("blue book open", typeof(Sprite)) as Sprite;
+            openBook.enabled = true;
+            fireBook.enabled = true;
+            airBook.enabled = true;
+            earthBook.enabled = true;
+        }
+        else if (currentActive == "air")
+        {
+            airBook.enabled = false;
+            openBook.sprite = Resources.Load("green book open", typeof(Sprite)) as Sprite;
+            openBook.enabled = true;
+            fireBook.enabled = true;
+            waterBook.enabled = true;
+            earthBook.enabled = true;
+        }
+        else if (currentActive == "earth")
+        {
+            earthBook.enabled = false;
+            openBook.sprite = Resources.Load("yellow book open", typeof(Sprite)) as Sprite;
+            openBook.enabled = true;
+            fireBook.enabled = true;
+            waterBook.enabled = true;
+            airBook.enabled = true;
+        }
+
+        if (fireCool == true)
+            fireCoolTimer.text = fireTime.ToString("0");
+        if (waterCool == true)
+            waterCoolTimer.text = waterTime.ToString("0");
+        if (airCool == true)
+            airCoolTimer.text = airTime.ToString("0");
+        if (earthCool == true)
+            earthCoolTimer.text = earthTime.ToString("0");
 	}
 	
 	void OnGUI() {
+        GUI.skin = invisibleBox;
 		GUI.SetNextControlName ("Spellbook");
 		Event e = Event.current;
 		if (e.keyCode == KeyCode.Return){
@@ -207,22 +310,13 @@ public class TextControlScript : MonoBehaviour {
             GUI.FocusControl("Spellbook");
         }
 		else if (hasReturned == false && controlUp == true && currentActive == "fire")
-			stringToEdit = GUI.TextField(new Rect(10, 10, 200, 20), stringToEdit, 25);
+			stringToEdit = GUI.TextField(new Rect((Screen.width/2 - 100), (Screen.height - (Screen.height * 0.9f)), 200, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "water")
-            stringToEdit = GUI.TextField(new Rect(240, 10, 200, 20), stringToEdit, 25);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "air")
-            stringToEdit = GUI.TextField(new Rect(470, 10, 200, 20), stringToEdit, 25);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "earth")
-            stringToEdit = GUI.TextField(new Rect(700, 10, 200, 20), stringToEdit, 25);
-
-        if (fireCool == true)
-            GUI.Box(new Rect(10, 10, 200, 20), fireTime.ToString("0"));
-        if (waterCool == true)
-            GUI.Box(new Rect(240, 10, 200, 20), waterTime.ToString("0"));
-        if (airCool == true)
-            GUI.Box(new Rect(470, 10, 200, 20), airTime.ToString("0"));
-        if (earthCool == true)
-            GUI.Box(new Rect(700, 10, 200, 20), earthTime.ToString("0"));
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
 
 	}
 }
