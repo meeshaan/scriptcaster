@@ -218,6 +218,14 @@ public class TextControlScript : MonoBehaviour {
                 earthBook.enabled = true;
                 openBook.enabled = false;
             }
+            else
+            {
+                openBook.enabled = false;
+                earthBook.enabled = true;
+                airBook.enabled = true;
+                waterBook.enabled = true;
+                fireBook.enabled = true;
+            }
 			stringToEdit = "";
             currentActive = "";
 		}
@@ -309,14 +317,23 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "earth";
             GUI.FocusControl("Spellbook");
         }
-		else if (hasReturned == false && controlUp == true && currentActive == "fire")
-			stringToEdit = GUI.TextField(new Rect((Screen.width/2 - 100), (Screen.height - (Screen.height * 0.9f)), 200, 60), stringToEdit, 100);
+        //else if (hasReturned == false && controlUp == true && currentActive == "fire")
+        //    stringToEdit = GUI.TextField(new Rect((Screen.width/2 - 100), (Screen.height - (Screen.height * 0.9f)), 200, 60), stringToEdit, 100);
+        //else if (hasReturned == false && controlUp == true && currentActive == "water")
+        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+        //else if (hasReturned == false && controlUp == true && currentActive == "air")
+        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+        //else if (hasReturned == false && controlUp == true && currentActive == "earth")
+        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+
+        else if (hasReturned == false && controlUp == true && currentActive == "fire")
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 100), (Screen.height - (Screen.height/4.55f)), 200, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "water")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "air")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "earth")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
 
 	}
 }
