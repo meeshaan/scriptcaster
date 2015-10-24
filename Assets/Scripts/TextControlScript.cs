@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -52,6 +52,7 @@ public class TextControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
         if (fireCool == true)
         {
             fireTime -= Time.deltaTime;
