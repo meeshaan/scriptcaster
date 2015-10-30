@@ -4,38 +4,61 @@ using UnityEngine.UI;
 
 public class TextControlScript : MonoBehaviour {
 	
-	public string stringToEdit = "";
+    //input string
+    string stringToEdit = "";
+
+    //spell types
+    //fire
 	public Transform fireball;
 	public Transform firecube;
 	public Transform firecap;
+    //water
     public Transform waterball;
     public Transform watercube;
     public Transform watercap;
+    //air
     public Transform airball;
     public Transform aircube;
     public Transform aircap;
+    //earth
     public Transform earthball;
     public Transform earthcube;
     public Transform earthcap;
+    
+    //for text prompt for checking if return key has been entered
 	bool hasReturned = false;
 	bool controlUp = false;
+
+    //active string for distinguishing spells
     string currentActive;
+
+    //projectile speed
     public float projSpeed;
-    public bool fireCool;
-    public bool waterCool;
-    public bool airCool;
-    public bool earthCool;
-    public float fireTime;
-    public float waterTime;
-    public float airTime;
-    public float earthTime;
-    float coolTime = 10.0f;
+
+    //booleans to manage cooldowns
+    bool fireCool;
+    bool waterCool;
+    bool airCool;
+    bool earthCool;
+
+    //length of cooldowns for each spell
+    float fireTime;
+    float waterTime;
+    float airTime;
+    float earthTime;
+    public float coolTime;
+
+    //sprites for books
     public SpriteRenderer fireBook;
     public SpriteRenderer waterBook;
     public SpriteRenderer airBook;
     public SpriteRenderer earthBook;
     public SpriteRenderer openBook;
+
+    //skin for textbox
     public GUISkin invisibleBox;
+
+    //cooldown timers display
     public Text fireCoolTimer;
     public Text waterCoolTimer;
     public Text airCoolTimer;
@@ -43,16 +66,28 @@ public class TextControlScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //cooldowns
         fireCool = false;
         waterCool = false;
         airCool = false;
         earthCool = false;
         openBook.enabled = false;
+        fireTime = coolTime;
+        waterTime = coolTime;
+        airTime = coolTime;
+        earthTime = coolTime;
 	}
-	
-	// Update is called once per frame
+
+//----------------------------------------------------------------
+//UPDATE FUNCTION
+//----------------------------------------------------------------
 	void Update () {
 		
+        //COOLDOWN TIMERS
+
+        //for when cooldown is active and checking for when cooldown hits 0
+        //When 0 reactivate sprite and re-enable text prompt
+        //fire
         if (fireCool == true)
         {
             fireTime -= Time.deltaTime;
@@ -64,6 +99,7 @@ public class TextControlScript : MonoBehaviour {
                 fireBook.sprite = Resources.Load("red book", typeof(Sprite)) as Sprite;
             }
         }
+        //water
         if (waterCool == true)
         {
             waterTime -= Time.deltaTime;
@@ -75,6 +111,7 @@ public class TextControlScript : MonoBehaviour {
                 waterBook.sprite = Resources.Load("blue book", typeof(Sprite)) as Sprite;
             }
         }
+        //air
         if (airCool == true)
         {
             airTime -= Time.deltaTime;
@@ -86,6 +123,7 @@ public class TextControlScript : MonoBehaviour {
                 airBook.sprite = Resources.Load("green book", typeof(Sprite)) as Sprite;
             }
         }
+        //earth
         if (earthCool == true)
         {
             earthTime -= Time.deltaTime;
@@ -98,7 +136,12 @@ public class TextControlScript : MonoBehaviour {
             }
         }
 
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        //SPELL CASTING
+
+        //casting spells, checking for return key
 		if (hasReturned == true){
+            //----------------------fire-------------------------------
 			if((currentActive + stringToEdit).ToLower() == "fireball"){
 				//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,0)));
@@ -128,6 +171,8 @@ public class TextControlScript : MonoBehaviour {
                 fireBook.enabled = true;
                 openBook.enabled = false;
 			}
+
+            //----------------------water-------------------------------
             if ((currentActive + stringToEdit).ToLower() == "waterball")
             {
                 //Transform newball = (Transform)Instantiate(waterball, new Vector3(0, 0, 0), Quaternion.identity);
@@ -159,6 +204,8 @@ public class TextControlScript : MonoBehaviour {
                 waterBook.enabled = true;
                 openBook.enabled = false;
             }
+
+            //----------------------air-------------------------------
             if ((currentActive + stringToEdit).ToLower() == "airball")
             {
                 //Transform newball = (Transform)Instantiate(airball, new Vector3(0, 0, 0), Quaternion.identity);
@@ -189,6 +236,8 @@ public class TextControlScript : MonoBehaviour {
                 airBook.enabled = true;
                 openBook.enabled = false;
             }
+
+            //----------------------earth-------------------------------
             if ((currentActive + stringToEdit).ToLower() == "earthball")
             {
                 //Transform newball = (Transform)Instantiate(earthball, new Vector3(0, 0, 0), Quaternion.identity);
@@ -231,6 +280,10 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "";
 		}
 
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        //SPRITE LOADING FOR TEXT PROMPTS
+
+        //opening books
         if (currentActive == "fire")
         {
             fireBook.enabled = false;
@@ -268,6 +321,10 @@ public class TextControlScript : MonoBehaviour {
             airBook.enabled = true;
         }
 
+        //---------------------------------------------------------------------------------------------------------------------------------------------
+        //COOLDOWNS
+
+        //for cooldown timers
         if (fireCool == true)
             fireCoolTimer.text = fireTime.ToString("0");
         if (waterCool == true)
@@ -277,15 +334,34 @@ public class TextControlScript : MonoBehaviour {
         if (earthCool == true)
             earthCoolTimer.text = earthTime.ToString("0");
 	}
-	
+
+
+//----------------------------------------------------------------
+//ONGUI FUNCTION
+//----------------------------------------------------------------
 	void OnGUI() {
+        
+        //fix for input string buffer bug
+        foreach (char c in stringToEdit)
+        {
+            if (c == '1' || c == '2' || c == '3' || c == '4')
+            {
+                stringToEdit = stringToEdit.Replace(c, ' ');
+                //Debug.Log("Detected Number");
+            }
+        }
+
+        //setting up text boxes
         GUI.skin = invisibleBox;
 		GUI.SetNextControlName ("Spellbook");
 		Event e = Event.current;
+
+        //if return key has been entered
 		if (e.keyCode == KeyCode.Return){
 			hasReturned = true;
 			controlUp = false;
 		}
+        //if 1 key has been entered - fire
 		else if (e.keyCode == KeyCode.Alpha1 && fireCool == false)
         {
 			controlUp = true;
@@ -294,6 +370,7 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "fire";
 			GUI.FocusControl("Spellbook");
 		}
+        //if 2 key has been entered - water
         else if (e.keyCode == KeyCode.Alpha2 && waterCool == false)
         {
             controlUp = true;
@@ -302,6 +379,7 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "water";
             GUI.FocusControl("Spellbook");
         }
+        //if 2 key has been entered - air
         else if (e.keyCode == KeyCode.Alpha3 && airCool == false)
         {
             controlUp = true;
@@ -310,6 +388,7 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "air";
             GUI.FocusControl("Spellbook");
         }
+        //if 2 key has been entered - earth
         else if (e.keyCode == KeyCode.Alpha4 && earthCool == false)
         {
             controlUp = true;
@@ -318,6 +397,7 @@ public class TextControlScript : MonoBehaviour {
             currentActive = "earth";
             GUI.FocusControl("Spellbook");
         }
+
         //else if (hasReturned == false && controlUp == true && currentActive == "fire")
         //    stringToEdit = GUI.TextField(new Rect((Screen.width/2 - 100), (Screen.height - (Screen.height * 0.9f)), 200, 60), stringToEdit, 100);
         //else if (hasReturned == false && controlUp == true && currentActive == "water")
@@ -326,7 +406,8 @@ public class TextControlScript : MonoBehaviour {
         //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
         //else if (hasReturned == false && controlUp == true && currentActive == "earth")
         //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
-
+        
+        //displaying text field, custom position place on screen. adjusted for screen width and height
         else if (hasReturned == false && controlUp == true && currentActive == "fire")
             stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 100), (Screen.height - (Screen.height/4.55f)), 200, 60), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "water")
