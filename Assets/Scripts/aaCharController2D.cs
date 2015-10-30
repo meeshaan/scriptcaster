@@ -86,6 +86,15 @@ public class aaCharController2D : MonoBehaviour {
 		if (grounded && Input.GetKeyDown (KeyCode.Space)) 
 		{
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+			spriteAnim.SetBool("jumping", true);
+		}
+
+		if (!grounded) {
+			spriteAnim.SetBool ("jumping", true);
+			spriteAnim.SetBool ("in air", true);
+		} else {
+			spriteAnim.SetBool("in air", false);
+			spriteAnim.SetBool("jumping", false);
 		}
 	}
 
