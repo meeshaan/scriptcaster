@@ -12,7 +12,7 @@ public class aaCharController2D : MonoBehaviour {
 
 	float groundRadius = 0.2f;
 	bool facingRight = true;
-	bool grounded = false;
+	public bool grounded = false;
 	bool gravitySwitched = false;
 	public bool isSlow = false;
 
@@ -22,7 +22,7 @@ public class aaCharController2D : MonoBehaviour {
 
 	void Start () 
 	{
-		GameObject Manager = GameObject.Find ("GameManager");
+		GameObject Manager = GameObject.FindGameObjectWithTag ("GameController");
 		gameManager = Manager.GetComponent<GameManager>();
 
 		spriteAnim = this.GetComponentInChildren<Animator> ();
@@ -86,16 +86,8 @@ public class aaCharController2D : MonoBehaviour {
 		if (grounded && Input.GetKeyDown (KeyCode.Space)) 
 		{
 			GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
-			spriteAnim.SetBool("jumping", true);
 		}
 
-		if (!grounded) {
-			spriteAnim.SetBool ("jumping", true);
-			spriteAnim.SetBool ("in air", true);
-		} else {
-			spriteAnim.SetBool("in air", false);
-			spriteAnim.SetBool("jumping", false);
-		}
 	}
 
 	void Flip()
