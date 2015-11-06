@@ -34,6 +34,10 @@ public class TextControlScript : MonoBehaviour {
 
     //projectile speed
     public float projSpeed;
+    public float fireSpeed;
+    public float bubbleSpeed;
+    public float tornadoSpeed;
+    public float rockSpeed;
 
     //booleans to manage cooldowns
     bool fireCool;
@@ -57,6 +61,7 @@ public class TextControlScript : MonoBehaviour {
 
     //skin for textbox
     public GUISkin invisibleBox;
+    GUIStyle style;
 
     //cooldown timers display
     public Text fireCoolTimer;
@@ -76,6 +81,9 @@ public class TextControlScript : MonoBehaviour {
         waterTime = coolTime;
         airTime = coolTime;
         earthTime = coolTime;
+
+        //GUI style
+        invisibleBox.textField.fontSize = Screen.width / 30;
 	}
 
 //----------------------------------------------------------------
@@ -145,7 +153,7 @@ public class TextControlScript : MonoBehaviour {
 			if((currentActive + stringToEdit).ToLower() == "fireball"){
 				//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,0)));
-                fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(fireSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 fireCool = true;
                 fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 fireBook.enabled = true;
@@ -173,11 +181,11 @@ public class TextControlScript : MonoBehaviour {
 			}
 
             //----------------------water-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "waterball")
+            if ((currentActive + stringToEdit).ToLower() == "waterbubble")
             {
                 //Transform newball = (Transform)Instantiate(waterball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform wBall = (Transform)Instantiate(waterball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                wBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                wBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(bubbleSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 waterCool = true;
                 waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 waterBook.enabled = true;
@@ -206,11 +214,11 @@ public class TextControlScript : MonoBehaviour {
             }
 
             //----------------------air-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "airball")
+            if ((currentActive + stringToEdit).ToLower() == "airgust")
             {
                 //Transform newball = (Transform)Instantiate(airball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform aBall = (Transform)Instantiate(airball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(tornadoSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 airCool = true;
                 airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 airBook.enabled = true;
@@ -238,11 +246,11 @@ public class TextControlScript : MonoBehaviour {
             }
 
             //----------------------earth-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "earthball")
+            if ((currentActive + stringToEdit).ToLower() == "earthrock")
             {
                 //Transform newball = (Transform)Instantiate(earthball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform eBall = (Transform)Instantiate(earthball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                eBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                eBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(rockSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 earthCool = true;
                 earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 earthBook.enabled = true;
