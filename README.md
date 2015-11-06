@@ -12,3 +12,5 @@ Team Members:
 	Audry Will, 
 	Jacqueline Yee,
 	Aaron Weinberg
+	
+Spell list(tentative): https://docs.google.com/a/mail.chapman.edu/document/d/1FcWswjtPL7lLEAHrRWymUbrgam1LHMbv24-hCHvoIUg/edit?usp=sharing
