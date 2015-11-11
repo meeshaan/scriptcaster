@@ -69,6 +69,9 @@ public class TextControlScript : MonoBehaviour {
     public Text airCoolTimer;
     public Text earthCoolTimer;
 
+    //slo-mo Value
+    public float slomoValue = 0.1f;
+
 	// Use this for initialization
 	void Start () {
         //cooldowns
@@ -368,6 +371,9 @@ public class TextControlScript : MonoBehaviour {
 		if (e.keyCode == KeyCode.Return){
 			hasReturned = true;
 			controlUp = false;
+
+            //deactivate slo-mo
+            Time.timeScale = 1.0f;
 		}
         //if 1 key has been entered - fire
 		else if (e.keyCode == KeyCode.Alpha1 && fireCool == false)
@@ -377,6 +383,10 @@ public class TextControlScript : MonoBehaviour {
 			stringToEdit = "";
             currentActive = "fire";
 			GUI.FocusControl("Spellbook");
+
+            //activate slo-mo
+            Time.timeScale = slomoValue;
+
 		}
         //if 2 key has been entered - water
         else if (e.keyCode == KeyCode.Alpha2 && waterCool == false)
@@ -386,6 +396,9 @@ public class TextControlScript : MonoBehaviour {
             stringToEdit = "";
             currentActive = "water";
             GUI.FocusControl("Spellbook");
+
+            //activate slo-mo
+            Time.timeScale = slomoValue;
         }
         //if 2 key has been entered - air
         else if (e.keyCode == KeyCode.Alpha3 && airCool == false)
@@ -395,6 +408,9 @@ public class TextControlScript : MonoBehaviour {
             stringToEdit = "";
             currentActive = "air";
             GUI.FocusControl("Spellbook");
+
+            //activate slo-mo
+            Time.timeScale = slomoValue;
         }
         //if 2 key has been entered - earth
         else if (e.keyCode == KeyCode.Alpha4 && earthCool == false)
@@ -404,26 +420,20 @@ public class TextControlScript : MonoBehaviour {
             stringToEdit = "";
             currentActive = "earth";
             GUI.FocusControl("Spellbook");
-        }
 
-        //else if (hasReturned == false && controlUp == true && currentActive == "fire")
-        //    stringToEdit = GUI.TextField(new Rect((Screen.width/2 - 100), (Screen.height - (Screen.height * 0.9f)), 200, 60), stringToEdit, 100);
-        //else if (hasReturned == false && controlUp == true && currentActive == "water")
-        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
-        //else if (hasReturned == false && controlUp == true && currentActive == "air")
-        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
-        //else if (hasReturned == false && controlUp == true && currentActive == "earth")
-        //    stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height * 0.9f)), 100, 60), stringToEdit, 100);
+            //activate slo-mo
+            Time.timeScale = slomoValue;
+        }
         
         //displaying text field, custom position place on screen. adjusted for screen width and height
         else if (hasReturned == false && controlUp == true && currentActive == "fire")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 100), (Screen.height - (Screen.height/4.55f)), 200, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "water")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "air")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "earth")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 50), (Screen.height - (Screen.height/4.55f)), 100, 60), stringToEdit, 100);
+            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
 
 	}
 }
