@@ -2,14 +2,13 @@
 using System.Collections;
 
 public class bottomBoundaryCollision : MonoBehaviour {
-	GameObject player;
+	Transform player;
 	public int x = 0;
 	public int y = 1;
-	public Vector2 start = new Vector2(0,1);
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Transform> ();
 	}
 	
 	// Update is called once per frame
@@ -18,6 +17,6 @@ public class bottomBoundaryCollision : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		player.transform.position = start;
+		player.position.Set (0, 1, 0);
 	}
 }

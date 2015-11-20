@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\bottomBoundaryCollision.cs">
     <Files>
-      <File FileName="Assets\Scripts\bottomBoundaryCollision.cs" Line="8" Column="36" />
+      <File FileName="Assets\Scripts\bottomBoundaryCollision.cs" Line="23" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
