@@ -61,6 +61,7 @@ public class TextControlScript : MonoBehaviour {
     public SpriteRenderer airBook;
     public SpriteRenderer earthBook;
     public SpriteRenderer openBook;
+	public SpriteRenderer pauseBook;
 
     //skin for textbox
     public GUISkin invisibleBox;
@@ -74,6 +75,12 @@ public class TextControlScript : MonoBehaviour {
 
     //slo-mo Value
     public float slomoValue = 0.1f;
+
+	//for pause menu
+	bool isPaused;
+	public Text pauseMenu1;
+	public Text pauseMenu2;
+	float resumeSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -90,6 +97,12 @@ public class TextControlScript : MonoBehaviour {
 
         //GUI style
         invisibleBox.textField.fontSize = Screen.width / 30;
+
+		//pause menu
+		isPaused = false;
+		pauseBook.enabled = false;
+		pauseMenu1.enabled = false;
+		pauseMenu2.enabled = false;
 	}
 
 //----------------------------------------------------------------
@@ -372,15 +385,34 @@ public class TextControlScript : MonoBehaviour {
 		Event e = Event.current;
 
         //if return key has been entered
-		if (e.keyCode == KeyCode.Return){
+		if (e.keyCode == KeyCode.Return && !isPaused) {
 			hasReturned = true;
 			controlUp = false;
 
-            //deactivate slo-mo
-            Time.timeScale = 1.0f;
+			//deactivate slo-mo
+			Time.timeScale = 1.0f;
+		}
+		//for pausing
+		else if (e.keyCode == KeyCode.Escape && !isPaused) 
+		{
+			resumeSpeed = Time.timeScale;
+			Time.timeScale = 0.0f;
+			pauseBook.enabled = true;
+			pauseMenu1.enabled = true;
+			pauseMenu2.enabled = true;
+			isPaused = true;
+		} 
+		//for resuming
+		else if (e.keyCode == KeyCode.R && isPaused)
+		{
+			Time.timeScale = resumeSpeed;
+			pauseBook.enabled = false;
+			pauseMenu1.enabled = false;
+			pauseMenu2.enabled = false;
+			isPaused = false;
 		}
         //if 1 key has been entered - fire
-		else if (e.keyCode == KeyCode.Alpha1 && fireCool == false)
+		else if (e.keyCode == KeyCode.Alpha1 && fireCool == false && !isPaused)
         {
 			controlUp = true;
 			hasReturned = false;
@@ -393,7 +425,7 @@ public class TextControlScript : MonoBehaviour {
 
 		}
         //if 2 key has been entered - water
-        else if (e.keyCode == KeyCode.Alpha2 && waterCool == false)
+		else if (e.keyCode == KeyCode.Alpha2 && waterCool == false && !isPaused)
         {
             controlUp = true;
             hasReturned = false;
@@ -405,7 +437,7 @@ public class TextControlScript : MonoBehaviour {
             Time.timeScale = slomoValue;
         }
         //if 2 key has been entered - air
-        else if (e.keyCode == KeyCode.Alpha3 && airCool == false)
+		else if (e.keyCode == KeyCode.Alpha3 && airCool == false && !isPaused)
         {
             controlUp = true;
             hasReturned = false;
@@ -417,7 +449,7 @@ public class TextControlScript : MonoBehaviour {
             Time.timeScale = slomoValue;
         }
         //if 2 key has been entered - earth
-        else if (e.keyCode == KeyCode.Alpha4 && earthCool == false)
+		else if (e.keyCode == KeyCode.Alpha4 && earthCool == false && !isPaused)
         {
             controlUp = true;
             hasReturned = false;
