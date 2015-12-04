@@ -41,6 +41,9 @@ public class TextControlScript : MonoBehaviour {
     public float waveSpeed;
     public float liftSpeed;
     public float dropletSpeed;
+    public float flareSpeed;
+    public float spoutSpeed;
+    public float slashSpeed;
 
     //booleans to manage cooldowns
     bool fireCool;
@@ -178,11 +181,11 @@ public class TextControlScript : MonoBehaviour {
                 fireBook.enabled = true;
                 openBook.enabled = false;
 			}
-            else if ((currentActive + stringToEdit).ToLower() == "firecube")
+            else if ((currentActive + stringToEdit).ToLower() == "fireflare")
             {
 				//Transform newcube = (Transform)Instantiate (firecube, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform fcube = (Transform)Instantiate(firecube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                fcube.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                fcube.GetComponent<Rigidbody2D>().AddForce(new Vector2(flareSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 fireCool = true;
                 fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 fireBook.enabled = true;
@@ -221,11 +224,10 @@ public class TextControlScript : MonoBehaviour {
                 openBook.enabled = false;
 
             }
-            else if ((currentActive + stringToEdit).ToLower() == "waterwave")
+            else if ((currentActive + stringToEdit).ToLower() == "waterspout")
             {
+                StartCoroutine("goSpout");
                 //Transform newcap = (Transform)Instantiate(watercap, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform wCap = (Transform)Instantiate(watercap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                wCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(waveSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 waterCool = true;
                 waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 waterBook.enabled = true;
@@ -254,11 +256,11 @@ public class TextControlScript : MonoBehaviour {
                 airBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "aircap")
+            else if ((currentActive + stringToEdit).ToLower() == "airslash")
             {
                 //Transform newcap = (Transform)Instantiate(aircap, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform aCap = (Transform)Instantiate(aircap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(slashSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 airCool = true;
                 airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 airBook.enabled = true;
@@ -286,11 +288,11 @@ public class TextControlScript : MonoBehaviour {
                 earthBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "earthcap")
+            else if ((currentActive + stringToEdit).ToLower() == "earthwall")
             {
                 //Transform newcap = (Transform)Instantiate(earthcap, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform eCap = (Transform)Instantiate(earthcap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                eCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+                //eCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
                 earthCool = true;
                 earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 earthBook.enabled = true;
@@ -472,4 +474,14 @@ public class TextControlScript : MonoBehaviour {
             stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
 
 	}
+
+    IEnumerator goSpout()
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            Transform wCap = (Transform)Instantiate(watercap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            wCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(spoutSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 }
