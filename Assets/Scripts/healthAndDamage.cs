@@ -8,9 +8,9 @@ public class healthAndDamage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		renderer = GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<SpriteRenderer> ();
-    //GameObject sprite = GameObject.Find("Character Sprite");
-    //renderer = sprite.GetComponent<SpriteRenderer>();
+		//renderer = GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<SpriteRenderer> ();
+    	GameObject sprite = GameObject.Find("Character Sprite");
+    	renderer = sprite.GetComponent<SpriteRenderer>();
 	
 	}
 	
