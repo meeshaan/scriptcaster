@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AirControl.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CharController2D.cs" />
      <Compile Include="Assets\Scripts\CharacterAnimation.cs" />
      <Compile Include="Assets\Scripts\EarthControl.cs" />
@@ -53,6 +54,7 @@
      <Compile Include="Assets\Scripts\FireControl.cs" />
      <Compile Include="Assets\Scripts\FollowPath.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\NewMovementScript.cs" />
      <Compile Include="Assets\Scripts\PathDefinition.cs" />
      <Compile Include="Assets\Scripts\Spell\boulder.cs" />
      <Compile Include="Assets\Scripts\Spell\bubble.cs" />
@@ -74,19 +76,14 @@
      <Compile Include="Assets\Scripts\WaterFollowPath.cs" />
      <Compile Include="Assets\Scripts\aaCharController2D.cs" />
      <Compile Include="Assets\Scripts\bottomBoundaryCollision.cs" />
+     <Compile Include="Assets\Scripts\healthAndDamage.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
