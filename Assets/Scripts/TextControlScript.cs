@@ -403,7 +403,12 @@ public class TextControlScript : MonoBehaviour {
 			pauseMenu1.enabled = true;
 			pauseMenu2.enabled = true;
 			isPaused = true;
-		} 
+		}
+		//returning 
+		else if (e.keyCode == KeyCode.Q && isPaused)
+		{
+			Application.LoadLevel(0);
+		}
 		//for resuming
 		else if (e.keyCode == KeyCode.R && isPaused)
 		{

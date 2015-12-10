@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\WaterFollowPath.cs" />
      <Compile Include="Assets\Scripts\aaCharController2D.cs" />
      <Compile Include="Assets\Scripts\bottomBoundaryCollision.cs" />
+     <Compile Include="Assets\Scripts\changeScene.cs" />
      <Compile Include="Assets\Scripts\healthAndDamage.cs" />
      <Compile Include="Assets\Scripts\test.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
