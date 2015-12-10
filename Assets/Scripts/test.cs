@@ -7,8 +7,10 @@ public class test : MonoBehaviour {
 	public Transform cube;
 	public Transform cylinder;
 	public Transform sphere; 
-
-
+	//
+	public Transform enemy;
+	public GameObject Spawnner;
+	//
 	public GameObject spawn;
 	public GameObject BottomRight; 
 	public GameObject BottomLeft;
@@ -22,7 +24,8 @@ public class test : MonoBehaviour {
 	public int cylinderCount = 0;
 	public int sphereCount = 0;
 
-	public int random = 0;
+	public int randomEnemy = 0;
+	public int randomSpawn = 0;
 
 	private List<GameObject> enemies = new List<GameObject>();
 	
@@ -30,16 +33,28 @@ public class test : MonoBehaviour {
 	public bool x = true;
 	
 	public float timer = 4.9f;
+
+
+
+	//reference Game Mananger//
+
+	private GameManager gameManager;
 	
 	// Use this for initialization
 	void Start () {
-		
+		GameObject Manager = GameObject.FindGameObjectWithTag ("GameController");
+		gameManager = Manager.GetComponent<GameManager>();
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		
+		spawn = gameManager.Path1;
+		TopRight = gameManager.Path2;
+		BottomLeft = gameManager.Path1;
+		BottomRight = gameManager.Path2;
 		
 		StartCoroutine (Spawn ());
 		
@@ -53,7 +68,8 @@ public class test : MonoBehaviour {
 			
 			x = false; 
 			yield return new WaitForSeconds (1f);
-			random = Random.Range (1, 5);
+			randomEnemy = Random.Range (1, 4);
+			randomSpawn = Random.Range (1,4);
 			//if (capCount <= 3 && random == 1) 
 			/*if(capCount <= 0)
 			{
@@ -68,11 +84,33 @@ public class test : MonoBehaviour {
 			x = true;
 			*/
 
-		if (cubeCount <= 0) 
+		if (cubeCount <= 1 || capCount <= 1) 
 		{
+			if (randomEnemy == 1 || randomEnemy == 3)
+				
+					enemy = cube;
+				
+			else if (randomEnemy == 2 || randomEnemy == 4)
+				
+					enemy = cap;
+				
+			else
+					continue;
+			if (randomSpawn == 1 || randomSpawn == 3)
+				
+					Spawnner = spawn;
+				
+			else if (randomSpawn == 2 || randomSpawn == 4)
+				
+					Spawnner = TopRight;
+				
+			
+				
+				
+
 			//cubeOffset = cubeOffset + 0.7f; 
-			GameObject newCube = Instantiate (cube, TopRight.transform.position, Quaternion.identity) as GameObject;
-			newCube = Resources.Load("cube" + cubeCount) as GameObject;
+			GameObject newEnemy = Instantiate (enemy, Spawnner.transform.position, Quaternion.identity) as GameObject;
+			//newEnemy = Resources.Load("cube" + cubeCount) as GameObject;
 			cubeCount = cubeCount + 1;
 			Debug.Log ("test1");
 			yield return new WaitForSeconds (3f);
