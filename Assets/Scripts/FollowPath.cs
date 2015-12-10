@@ -11,14 +11,43 @@ public class FollowPath : MonoBehaviour
 	}
 
 	public FollowType Type = FollowType.MoveTowards;
-	public PathDefinition Path;
+	private PathDefinition Path;
+	private PathDefinition[] p;
+	public PathDefinition P1;
+	public PathDefinition P2;
+	//public PathDefinition P3; 
 	public float Speed = 1;
 	public float MaxDistanceToGoal = .1f;
 
 	public IEnumerator<Transform> _currentPoint;
 
+
+	private GameManager gameManager;
+	private test Test;
+
+
 	public void Start()
 	{
+		GameObject TESTER = GameObject.FindGameObjectWithTag ("GameController");
+		Test = TESTER.GetComponent<test>();
+
+		p = FindObjectsOfType<PathDefinition> ();
+		for (int i = 0; i < p.Length; i++)
+			if (i == 1)
+				P2 = p [i];
+			else if (i == 2) 
+				P1 = p [i];
+			//else if (i == 3)
+				//P3 = p [i];
+			else 
+				continue;
+		if (Test.randomSpawn == 1 || Test.randomSpawn == 3)
+			Path = P1;
+		else if (Test.randomSpawn == 2 || Test.randomSpawn == 4)
+			Path = P2;
+
+
+		//Path = FindObjectOfType<PathDefinition> ();
 		if (Path == null) 
 		{
 			Debug.LogError("Path cannot be null", gameObject);
