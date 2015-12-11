@@ -5,11 +5,13 @@ public class GameManager : MonoBehaviour {
 	public bool SlowTime = false;
 	public GameObject Path1;
 	public GameObject Path2;
+	public GameObject Path3;
 
 	// Use this for initialization
 	void Start () {
 		Path1 = GameObject.FindGameObjectWithTag ("Path1");
 		Path2 = GameObject.FindGameObjectWithTag ("Path2");
+		Path3 = GameObject.FindGameObjectWithTag ("Path3");
 	
 	}
 	

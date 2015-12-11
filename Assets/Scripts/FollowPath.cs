@@ -12,10 +12,10 @@ public class FollowPath : MonoBehaviour
 
 	public FollowType Type = FollowType.MoveTowards;
 	private PathDefinition Path;
-	private PathDefinition[] p;
+	public PathDefinition[] p;
 	public PathDefinition P1;
 	public PathDefinition P2;
-	//public PathDefinition P3; 
+	public PathDefinition P3; 
 	public float Speed = 1;
 	public float MaxDistanceToGoal = .1f;
 
@@ -32,19 +32,21 @@ public class FollowPath : MonoBehaviour
 		Test = TESTER.GetComponent<test>();
 
 		p = FindObjectsOfType<PathDefinition> ();
-		for (int i = 0; i < p.Length; i++)
+		for (int i = 0; i < p.Length; i++) {
 			if (i == 1)
 				P2 = p [i];
 			else if (i == 2) 
 				P1 = p [i];
-			//else if (i == 3)
-				//P3 = p [i];
-			else 
-				continue;
-		if (Test.randomSpawn == 1 || Test.randomSpawn == 3)
+			else if (i == 0)
+				P3 = p [i];
+		}
+		if (Test.randomSpawn == 1 )
 			Path = P1;
 		else if (Test.randomSpawn == 2 || Test.randomSpawn == 4)
 			Path = P2;
+		else if( Test.randomSpawn == 3)
+			Path = P3;
+
 
 
 		//Path = FindObjectOfType<PathDefinition> ();
