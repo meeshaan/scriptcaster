@@ -3,7 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class TextControlScript : MonoBehaviour {
-	
+
+	//player animator
+	public Animator player;
+
     //input string
     string stringToEdit = "";
 
@@ -99,7 +102,7 @@ public class TextControlScript : MonoBehaviour {
         earthTime = coolTime;
 
         //GUI style
-        invisibleBox.textField.fontSize = Screen.width / 30;
+        invisibleBox.textField.fontSize = Screen.width / 15;
 
 		//pause menu
 		isPaused = false;
@@ -171,6 +174,7 @@ public class TextControlScript : MonoBehaviour {
 
         //casting spells, checking for return key
 		if (hasReturned == true){
+			player.SetBool("writing", false);
             //----------------------fire-------------------------------
 			if((currentActive + stringToEdit).ToLower() == "fireball"){
 				//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
@@ -421,6 +425,7 @@ public class TextControlScript : MonoBehaviour {
         //if 1 key has been entered - fire
 		else if (e.keyCode == KeyCode.Alpha1 && fireCool == false && !isPaused)
         {
+			player.SetBool("writing", true);
 			controlUp = true;
 			hasReturned = false;
 			stringToEdit = "";
@@ -434,6 +439,7 @@ public class TextControlScript : MonoBehaviour {
         //if 2 key has been entered - water
 		else if (e.keyCode == KeyCode.Alpha2 && waterCool == false && !isPaused)
         {
+			player.SetBool("writing", true);
             controlUp = true;
             hasReturned = false;
             stringToEdit = "";
@@ -446,6 +452,7 @@ public class TextControlScript : MonoBehaviour {
         //if 2 key has been entered - air
 		else if (e.keyCode == KeyCode.Alpha3 && airCool == false && !isPaused)
         {
+			player.SetBool("writing", true);
             controlUp = true;
             hasReturned = false;
             stringToEdit = "";
@@ -458,6 +465,7 @@ public class TextControlScript : MonoBehaviour {
         //if 2 key has been entered - earth
 		else if (e.keyCode == KeyCode.Alpha4 && earthCool == false && !isPaused)
         {
+			player.SetBool("writing", true);
             controlUp = true;
             hasReturned = false;
             stringToEdit = "";

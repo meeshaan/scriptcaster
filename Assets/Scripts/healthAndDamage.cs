@@ -4,13 +4,16 @@ using System.Collections;
 public class healthAndDamage : MonoBehaviour {
   public int Health = 3;
   public bool Immune = false;
+  public Vector3 spawnPoint;
+  private CameraController cc;
   private SpriteRenderer renderer;
+  public float cameraWaitDuration = 3f;
 
 	// Use this for initialization
 	void Start () {
-		//renderer = GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<SpriteRenderer> ();
-    	GameObject sprite = GameObject.Find("Character Sprite");
-    	renderer = sprite.GetComponent<SpriteRenderer>();
+    GameObject sprite = GameObject.Find("Character Sprite");
+    renderer = sprite.GetComponent<SpriteRenderer>();
+	cc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
 	
 	}
 	
@@ -24,10 +27,23 @@ public class healthAndDamage : MonoBehaviour {
     if (coll.gameObject.tag == "Enemy" && Immune == false)
     {
       Health -= 1;
+	  Immune = true;
       ImmunityCounter();
       //Debug.Log("Detected");
     }
   }
+  
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.gameObject.tag == "Fall" && Immune == false)
+		{
+			Health -= 1;
+			cc.isFollowing = false;
+			Immune = true;
+			StartCoroutine(CameraFollowWait(cameraWaitDuration));
+			
+		}
+	}
 
   void ImmunityCounter()
   {
@@ -36,10 +52,18 @@ public class healthAndDamage : MonoBehaviour {
     StartCoroutine(CharBlink(.5f, 0.2f));
 
   }
+	
+
+  IEnumerator CameraFollowWait(float duration)
+  {
+    yield return new WaitForSeconds (duration);
+	GetComponent<Transform>().position = spawnPoint;
+	cc.isFollowing = true;
+	Immune = false;
+  }
 
   IEnumerator CharBlink(float duration, float blinkTime)
   {
-    Immune = true;
     //Debug.Log("Blink1");
     while (duration > 0f)
     {

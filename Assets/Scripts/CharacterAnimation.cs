@@ -2,13 +2,15 @@
 using System.Collections;
 
 public class CharacterAnimation : MonoBehaviour {
-
+	public int isDead;
 	Animator spriteAnim;
 	NewMovementScript characterController;
 	// Use this for initialization
 	void Start () {
 		spriteAnim = this.GetComponentInChildren<Animator> ();
 		characterController = this.GetComponentInParent<NewMovementScript> ();
+
+		isDead = 0;
 	}
 	
 	// Update is called once per frame
