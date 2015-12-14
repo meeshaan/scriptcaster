@@ -84,8 +84,8 @@ public class TextControlScript : MonoBehaviour {
 
 	//for pause menu
 	bool isPaused;
-	public Text pauseMenu1;
-	public Text pauseMenu2;
+	//public Text pauseMenu1;
+	//public Text pauseMenu2;
 	float resumeSpeed;
 
 	// Use this for initialization
@@ -107,8 +107,8 @@ public class TextControlScript : MonoBehaviour {
 		//pause menu
 		isPaused = false;
 		pauseBook.enabled = false;
-		pauseMenu1.enabled = false;
-		pauseMenu2.enabled = false;
+		//pauseMenu1.enabled = false;
+		//pauseMenu2.enabled = false;
 	}
 
 //----------------------------------------------------------------
@@ -404,12 +404,12 @@ public class TextControlScript : MonoBehaviour {
 			resumeSpeed = Time.timeScale;
 			Time.timeScale = 0.0f;
 			pauseBook.enabled = true;
-			pauseMenu1.enabled = true;
-			pauseMenu2.enabled = true;
+			//pauseMenu1.enabled = true;
+			//pauseMenu2.enabled = true;
 			isPaused = true;
 		}
 		//returning 
-		else if (e.keyCode == KeyCode.Q && isPaused)
+		else if (e.keyCode == KeyCode.M && isPaused)
 		{
 			Application.LoadLevel(0);
 		}
@@ -418,8 +418,8 @@ public class TextControlScript : MonoBehaviour {
 		{
 			Time.timeScale = resumeSpeed;
 			pauseBook.enabled = false;
-			pauseMenu1.enabled = false;
-			pauseMenu2.enabled = false;
+			//pauseMenu1.enabled = false;
+			//pauseMenu2.enabled = false;
 			isPaused = false;
 		}
         //if 1 key has been entered - fire
