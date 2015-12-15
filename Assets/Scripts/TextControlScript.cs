@@ -107,8 +107,9 @@ public class TextControlScript : MonoBehaviour {
 		//pause menu
 		isPaused = false;
 		pauseBook.enabled = false;
-		//pauseMenu1.enabled = false;
-		//pauseMenu2.enabled = false;
+
+		//slomo
+		Time.timeScale = 1.0f;
 	}
 
 //----------------------------------------------------------------
