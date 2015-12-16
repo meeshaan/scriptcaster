@@ -52,23 +52,30 @@ public class FlyingSpawn : MonoBehaviour {
 		while (x == true) {
 			
 			x = false; 
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (3f);
 			randomEnemy = Random.Range (1, 3);
 			randomSpawn = Random.Range (1, 3);
-
-			if (randomEnemy == 1)
-				enemy = airEnemy;
-			else if (randomEnemy == 2)
-				enemy = fireEnemy;
-
-			if (randomSpawn == 1)
-				Spawnner = flySpawn1;
-			else if (randomSpawn == 2)
-				Spawnner = flySpawn2;
-
+			if(gameManager.SpawnnedEnemies < gameManager.totalEnemiesInGame)
+			{
+				if (randomEnemy == 1)
+				{
+					enemy = airEnemy;
+					gameManager.SpawnnedEnemies ++;
+				}
+				else if (randomEnemy == 2)
+				{
+					enemy = fireEnemy;
+					gameManager.SpawnnedEnemies ++;
+				}
+				if (randomSpawn == 1)
+					Spawnner = flySpawn1;
+				else if (randomSpawn == 2)
+					Spawnner = flySpawn2;
+			
 			GameObject newEnemy = Instantiate (enemy, Spawnner.transform.position, Quaternion.identity) as GameObject;
-			yield return new WaitForSeconds (3f);		
+			yield return new WaitForSeconds (2f);		
 			x = true;
+			}
 		}
 			//x = true;
 		

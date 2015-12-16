@@ -11,7 +11,7 @@ public class FollowPath : MonoBehaviour
 	}
 
 	public FollowType Type = FollowType.MoveTowards;
-	private PathDefinition Path;
+	public PathDefinition Path;
 	public PathDefinition[] p;
 	public PathDefinition P1;
 	public PathDefinition P2;
@@ -33,17 +33,17 @@ public class FollowPath : MonoBehaviour
 
 		p = FindObjectsOfType<PathDefinition> ();
 		for (int i = 0; i < p.Length; i++) {
-			if (i == 1)
-				P2 = p [i];
-			else if (i == 2) 
+			if (i == 0)
 				P1 = p [i];
-			else if (i == 0)
+			else if (i == 1) 
+				P2 = p [i];
+			else if (i == 2)
 				P3 = p [i];
 		}
 		if (Test.randomSpawn == 1 )
-			Path = P1;
-		else if (Test.randomSpawn == 2 || Test.randomSpawn == 4)
 			Path = P2;
+		else if (Test.randomSpawn == 2 )
+			Path = P1;
 		else if( Test.randomSpawn == 3)
 			Path = P3;
 

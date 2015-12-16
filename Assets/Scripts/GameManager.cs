@@ -6,12 +6,16 @@ public class GameManager : MonoBehaviour {
 	public GameObject Path1;
 	public GameObject Path2;
 	public GameObject Path3;
+	public int totalEnemiesInGame;
+	public int SpawnnedEnemies;
 
 	// Use this for initialization
 	void Start () {
 		Path1 = GameObject.FindGameObjectWithTag ("Path1");
 		Path2 = GameObject.FindGameObjectWithTag ("Path2");
 		Path3 = GameObject.FindGameObjectWithTag ("Path3");
+		totalEnemiesInGame = 12;
+		SpawnnedEnemies = 0;
 	
 	}
 	
