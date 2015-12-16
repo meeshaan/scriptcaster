@@ -1,17 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\test.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\healthAndDamage.cs">
     <Files>
-      <File FileName="Assets\Scripts\test.cs" Line="65" Column="1" />
-      <File FileName="Assets\isDead.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\healthAndDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DeathParameter.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharacterAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\changeScene.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FollowPath.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FlyingSpawn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\healthAndDamage.cs" Line="62" Column="29" />
+      <File FileName="Assets\Scripts\CharacterAnimation.cs" Line="41" Column="1" />
+      <File FileName="Assets\Scripts\changeScene.cs" Line="27" Column="1" />
+      <File FileName="Assets\Scripts\FollowPath.cs" Line="103" Column="1" />
+      <File FileName="Assets\Scripts\healthBar.cs" Line="20" Column="42" />
+      <File FileName="Assets\Scripts\TextControlScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -49,7 +49,7 @@ public class healthAndDamage : MonoBehaviour {
   {
   
     //Debug.Log("Counter");
-    StartCoroutine(CharBlink(.5f, 0.2f));
+    StartCoroutine(CharBlink(.2f, 0.2f));
 
   }
 	
@@ -59,8 +59,8 @@ public class healthAndDamage : MonoBehaviour {
     yield return new WaitForSeconds (duration);
 	GetComponent<Transform>().position = spawnPoint;
 	cc.isFollowing = true;
-	Immune = false;
-  }
+	StartCoroutine(CharBlink(.2f, 0.2f));
+	}
 
   IEnumerator CharBlink(float duration, float blinkTime)
   {
