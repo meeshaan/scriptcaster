@@ -491,7 +491,7 @@ public class TextControlScript : MonoBehaviour {
 
     IEnumerator goSpout()
     {
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             Transform wCap = (Transform)Instantiate(watercap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
             wCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(spoutSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));

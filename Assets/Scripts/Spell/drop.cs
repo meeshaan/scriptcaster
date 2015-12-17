@@ -8,7 +8,7 @@ public class drop : MonoBehaviour {
     public int type = 1;
     GameObject pl;
     TextControlScript castPoint;
-    float timer = 2.5f;
+    float timer = 1.0f;
     // Use this for initialization
     void Start()
     {

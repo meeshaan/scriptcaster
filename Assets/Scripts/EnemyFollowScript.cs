@@ -17,6 +17,7 @@ public class EnemyFollowScript : MonoBehaviour {
 	{
 		GameObject Manager = GameObject.Find ("GameManager");
 		gameManager = Manager.GetComponent<GameManager>();
+		Player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
 	// Update is called once per frame
