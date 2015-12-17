@@ -19,7 +19,7 @@ public class delete : MonoBehaviour {
 		if (health <= 0)
 			Destroy (this.gameObject);
 	}
-	IEnumerator OnColliderEnter2D(Collider2D other){
+	IEnumerator OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "spell") {
 			Debug.Log("wooooooo");
 			Destroy((other.gameObject));
