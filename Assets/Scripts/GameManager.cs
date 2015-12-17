@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 		Path1 = GameObject.FindGameObjectWithTag ("Path1");
 		Path2 = GameObject.FindGameObjectWithTag ("Path2");
 		Path3 = GameObject.FindGameObjectWithTag ("Path3");
-		totalEnemiesInGame = 12;
+		totalEnemiesInGame = 10;
 		SpawnnedEnemies = 0;
 	
 	}
