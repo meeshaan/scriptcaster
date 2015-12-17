@@ -178,9 +178,17 @@ public class TextControlScript : MonoBehaviour {
 			player.SetBool("writing", false);
             //----------------------fire-------------------------------
 			if((currentActive + stringToEdit).ToLower() == "fireball"){
-				//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,0)));
-                fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(fireSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				if (GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
+					//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
+                	Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,180,0)));
+                	fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(fireSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform fBall = (Transform)Instantiate(fireball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0,0,0)));
+					fBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(fireSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
                 fireCool = true;
                 fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 fireBook.enabled = true;
@@ -198,9 +206,16 @@ public class TextControlScript : MonoBehaviour {
 			}
             else if ((currentActive + stringToEdit).ToLower() == "fireblast")
             {
+				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
 				//Transform newcap = (Transform)Instantiate (firecap, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform fCap = (Transform)Instantiate(firecap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                Transform fCap = (Transform)Instantiate(firecap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
                 //fCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform fCap = (Transform)Instantiate(firecap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+				}
                 fireCool = true;
                 fireBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 fireBook.enabled = true;
@@ -220,9 +235,17 @@ public class TextControlScript : MonoBehaviour {
             }
             else if ((currentActive + stringToEdit).ToLower() == "waterdroplet")
             {
-                //Transform newcube = (Transform)Instantiate(watercube, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform wCube = (Transform)Instantiate(watercube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                wCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(dropletSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
+                	//Transform newcube = (Transform)Instantiate(watercube, new Vector3(0, 0, 0), Quaternion.identity);
+                	Transform wCube = (Transform)Instantiate(watercube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
+                	wCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(dropletSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform wCube = (Transform)Instantiate(watercube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					wCube.GetComponent<Rigidbody2D>().AddForce(new Vector2(dropletSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
                 waterCool = true;
                 waterBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 waterBook.enabled = true;
@@ -242,9 +265,17 @@ public class TextControlScript : MonoBehaviour {
             //----------------------air-------------------------------
             if ((currentActive + stringToEdit).ToLower() == "airgust")
             {
-                //Transform newball = (Transform)Instantiate(airball, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform aBall = (Transform)Instantiate(airball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(tornadoSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
+                	//Transform newball = (Transform)Instantiate(airball, new Vector3(0, 0, 0), Quaternion.identity);
+                	Transform aBall = (Transform)Instantiate(airball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
+                	aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(tornadoSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform aBall = (Transform)Instantiate(airball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					aBall.GetComponent<Rigidbody2D>().AddForce(new Vector2(tornadoSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
                 airCool = true;
                 airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 airBook.enabled = true;
@@ -263,9 +294,17 @@ public class TextControlScript : MonoBehaviour {
             }
             else if ((currentActive + stringToEdit).ToLower() == "airslash")
             {
-                //Transform newcap = (Transform)Instantiate(aircap, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform aCap = (Transform)Instantiate(aircap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(slashSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
+                	//Transform newcap = (Transform)Instantiate(aircap, new Vector3(0, 0, 0), Quaternion.identity);
+                	Transform aCap = (Transform)Instantiate(aircap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
+               		aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(slashSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform aCap = (Transform)Instantiate(aircap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+					aCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(slashSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
                 airCool = true;
                 airBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 airBook.enabled = true;
@@ -295,9 +334,16 @@ public class TextControlScript : MonoBehaviour {
             }
             else if ((currentActive + stringToEdit).ToLower() == "earthwall")
             {
-                //Transform newcap = (Transform)Instantiate(earthcap, new Vector3(0, 0, 0), Quaternion.identity);
-                Transform eCap = (Transform)Instantiate(earthcap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-                //eCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
+				{
+                	//Transform newcap = (Transform)Instantiate(earthcap, new Vector3(0, 0, 0), Quaternion.identity);
+                	Transform eCap = (Transform)Instantiate(earthcap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
+                	//eCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(projSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				}
+				else
+				{
+					Transform eCap = (Transform)Instantiate(earthcap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+				}
                 earthCool = true;
                 earthBook.sprite = Resources.Load("grey book", typeof(Sprite)) as Sprite;
                 earthBook.enabled = true;
@@ -491,11 +537,18 @@ public class TextControlScript : MonoBehaviour {
 
     IEnumerator goSpout()
     {
-        for (int i = 0; i < 4; ++i)
-        {
-            Transform wCap = (Transform)Instantiate(watercap, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            wCap.GetComponent<Rigidbody2D>().AddForce(new Vector2(spoutSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
-            yield return new WaitForSeconds(0.2f);
-        }
+		if (!GameObject.Find ("Player").GetComponent<NewMovementScript> ().facingRight) {
+			for (int i = 0; i < 4; ++i) {
+				Transform wCap = (Transform)Instantiate (watercap, this.gameObject.transform.position, Quaternion.Euler (new Vector3 (0, 180, 0)));
+				wCap.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (spoutSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				yield return new WaitForSeconds (0.2f);
+			}
+		} else {
+			for (int i = 0; i < 4; ++i) {
+				Transform wCap = (Transform)Instantiate (watercap, this.gameObject.transform.position, Quaternion.Euler (new Vector3 (0, 0, 0)));
+				wCap.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (spoutSpeed * this.transform.parent.gameObject.transform.localScale.x, 0));
+				yield return new WaitForSeconds (0.2f);
+			}
+		}
     }
 }

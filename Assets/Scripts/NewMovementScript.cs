@@ -22,7 +22,7 @@ public class NewMovementScript : MonoBehaviour {
   private bool playerJumping;          //Tell us if the player is holding down the jump button
   public Transform groundChecker;      //Gameobject required, placed where you wish "ground" to be detected from
 
-  bool facingRight = true;
+  public bool facingRight = true;
   public bool isGrounded = false;             //Check to see if we are grounded
 
   void Update()
