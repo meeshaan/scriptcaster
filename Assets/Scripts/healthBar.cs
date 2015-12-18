@@ -9,15 +9,17 @@ public class healthBar : MonoBehaviour {
 	private healthAndDamage health;
 	private SpriteRenderer healthSR;
 	private Animator player;
-	private isDead death;
+	//private isDead death;
+
 
 
 	// Use this for initialization
 	void Start () {
 		health = GameObject.FindGameObjectWithTag ("Player").GetComponent<healthAndDamage> ();
 		healthSR = GameObject.FindGameObjectWithTag ("healthBar").GetComponent<SpriteRenderer> ();
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponentInChildren<Animator> ();
-		death = player.GetComponent<isDead> ();
+		player = GameObject.FindGameObjectWithTag ("Character Sprite").GetComponent<Animator> ();
+		//death = player.GetComponent<isDead>();
+
 	}
 	
 	// Update is called once per frame
@@ -33,11 +35,14 @@ public class healthBar : MonoBehaviour {
 		} else {
 			healthSR.sprite = null;
 			player.SetBool("dead", true);
-			if(death.Dead == true){
-				Debug.Log("We died!");
-				Application.LoadLevel ("lose");
-			}
-
+			StartCoroutine(Lose ());
 		}
+	}
+
+	IEnumerator Lose(){
+		Debug.Log("We died!");
+		yield return new WaitForSeconds(1.2f);
+		Application.LoadLevel ("lose");
+
 	}
 }

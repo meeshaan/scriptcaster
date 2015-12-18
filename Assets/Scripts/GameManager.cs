@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-
 public class GameManager : MonoBehaviour {
 	public bool SlowTime = false;
 	public GameObject Path1;
@@ -8,7 +7,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject Path3;
 	public int totalEnemiesInGame;
 	public int SpawnnedEnemies;
-
+	public int enemiesKilled;
 	// Use this for initialization
 	void Start () {
 		Path1 = GameObject.FindGameObjectWithTag ("Path1");
@@ -16,7 +15,14 @@ public class GameManager : MonoBehaviour {
 		Path3 = GameObject.FindGameObjectWithTag ("Path3");
 		totalEnemiesInGame = 10;
 		SpawnnedEnemies = 0;
-	
+		enemiesKilled = 0;
+		
+	}
+
+	void Update(){
+		if (enemiesKilled == totalEnemiesInGame) {
+			Application.LoadLevel ("win");
+		}
 	}
 	
 	// Update is called once per frame
@@ -28,8 +34,5 @@ public class GameManager : MonoBehaviour {
 			else if (SlowTime == true)
 				SlowTime = false;
 		}
-
-
 	}
-
 }

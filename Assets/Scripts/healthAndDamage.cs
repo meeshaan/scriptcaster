@@ -43,13 +43,17 @@ public class healthAndDamage : MonoBehaviour {
 			StartCoroutine(CameraFollowWait(cameraWaitDuration));
 			
 		}
+		if (coll.gameObject.tag == "Fall" && Immune == true) {
+			cc.isFollowing = false;
+			StartCoroutine(CameraFollowWait(cameraWaitDuration));
+		}
 	}
 
   void ImmunityCounter()
   {
   
     //Debug.Log("Counter");
-    StartCoroutine(CharBlink(.2f, 0.2f));
+    StartCoroutine(CharBlink(0.2f, 0.2f));
 
   }
 	

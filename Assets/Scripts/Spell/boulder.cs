@@ -7,10 +7,12 @@ public class boulder : MonoBehaviour {
     Renderer rend;
     public float timer = 5.0f;
     int strength = 1;
+	private AudioSource audio;
     // Use this for initialization
     void Start()
     {
         rend = GetComponent<Renderer>();
+		audio = gameObject.GetComponent<AudioSource> ();
     }
 
     // Update is called once per frame
@@ -36,5 +38,8 @@ public class boulder : MonoBehaviour {
 
         if (c.collider.tag == "Enemy" && strength > 0)
             strength--;
+
+		if (c.collider.tag == "Player")
+			audio.Play ();
     }
 }

@@ -28,7 +28,7 @@ public class isDead : StateMachineBehaviour {
 	//
 	//}
 
-	void OnStateExit(){
+	void OnStateUpdate(){
 		Dead = true;
 	}
 }
