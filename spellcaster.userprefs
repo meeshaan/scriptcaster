@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerSpot.cs">
     <Files>
-      <File FileName="Assets\PlayerSpot.cs" Line="11" Column="28" />
-      <File FileName="Assets\Scripts\EnemyFollowScript.cs" Line="7" Column="2" />
+      <File FileName="Assets\PlayerSpot.cs" Line="52" Column="16" />
+      <File FileName="Assets\Scripts\EnemyFollowScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

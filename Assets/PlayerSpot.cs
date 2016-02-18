@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerSpot : MonoBehaviour {
 		
-	public Transform startSight, endSight;
+	public Transform startSight, endSight, endSight1, endSight2, endSight3;
 	public bool spotted = false;
 	public bool facingLeft = true;
 	public GameObject Player;
@@ -30,8 +30,19 @@ public class PlayerSpot : MonoBehaviour {
 	void Raycasting()
 	{
 		Debug.DrawLine (startSight.position,endSight.position,Color.red);
-		spotted = Physics2D.Linecast (startSight.position, endSight.position, 1 << LayerMask.NameToLayer("Player"));
+		Debug.DrawLine (startSight.position,endSight1.position,Color.red);
+		Debug.DrawLine (startSight.position,endSight2.position,Color.red);
+		Debug.DrawLine (startSight.position,endSight3.position,Color.red);
 
+		//spotted = Physics2D.Linecast (startSight.position, endSight.position, 1 << LayerMask.NameToLayer("Player"));
+
+		if (Physics2D.Linecast (startSight.position, endSight.position, 1 << LayerMask.NameToLayer ("Player")) == true ||
+		   Physics2D.Linecast (startSight.position, endSight1.position, 1 << LayerMask.NameToLayer ("Player")) == true ||
+		   Physics2D.Linecast (startSight.position, endSight2.position, 1 << LayerMask.NameToLayer ("Player")) == true ||
+		   Physics2D.Linecast (startSight.position, endSight3.position, 1 << LayerMask.NameToLayer ("Player")) == true) {
+			spotted = true;
+		} else
+			spotted = false;
 	}
 
 	void Behaviors()
@@ -55,6 +66,18 @@ public class PlayerSpot : MonoBehaviour {
 		if (spotted == true) {
 			target = Player.transform.position;
 			transform.position = Vector2.MoveTowards (transform.position, target, moveSpeed * Time.deltaTime);
+	/*	
+			if (facingLeft == true) {
+				endSight.transform.position.x += 10;
+				endSight1.transform.position.x += 10;
+				endSight2.transform.position.x += 10;
+				endSight3.transform.position.x += 10;
+			} else {
+				endSight.transform.position.x -= 10;
+				endSight1.transform.position.x -= 10;
+				endSight2.transform.position.x -= 10;
+				endSight3.transform.position.x -= 10;
+			}*/
 		}
 	}
 }
