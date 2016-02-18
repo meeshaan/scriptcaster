@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\PlayerSpot.cs" />
+     <Compile Include="Assets\Scripts\AI\AI_Patrol.cs" />
+     <Compile Include="Assets\Scripts\AI\AI_PlayerDetection.cs" />
      <Compile Include="Assets\Scripts\AirControl.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\CharController2D.cs" />
      <Compile Include="Assets\Scripts\CharacterAnimation.cs" />
      <Compile Include="Assets\Scripts\EarthControl.cs" />
      <Compile Include="Assets\Scripts\EnemyFollowScript.cs" />
@@ -76,7 +77,6 @@
      <Compile Include="Assets\Scripts\WaterControl.cs" />
      <Compile Include="Assets\Scripts\WaterEleFacing.cs" />
      <Compile Include="Assets\Scripts\WaterFollowPath.cs" />
-     <Compile Include="Assets\Scripts\aaCharController2D.cs" />
      <Compile Include="Assets\Scripts\changeScene.cs" />
      <Compile Include="Assets\Scripts\delete.cs" />
      <Compile Include="Assets\Scripts\healthAndDamage.cs" />

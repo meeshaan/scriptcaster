@@ -24,7 +24,7 @@ public class AI_PlayerDetection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Gizmos.DrawSphere(sightStart.position, radius);
-        Physics2D.CircleCast(sightStart.position, 10,);
+        //Physics2D.CircleCast(sightStart.position, 10,);//////////brent?
         Raycasting();
         Behaviors();
 	}
