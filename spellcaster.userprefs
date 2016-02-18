@@ -1,13 +1,9 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\healthBar.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PlayerSpot.cs">
     <Files>
-      <File FileName="Assets\Scripts\test.cs" Line="107" Column="33" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\healthAndDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\delete.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FlyingSpawn.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\healthBar.cs" Line="20" Column="63" />
+      <File FileName="Assets\PlayerSpot.cs" Line="11" Column="28" />
+      <File FileName="Assets\Scripts\EnemyFollowScript.cs" Line="7" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
