@@ -53,20 +53,20 @@ public class PlayerSpot : MonoBehaviour {
 	{
 
 		//flip left and right at random intervals
-		facingLeft = !facingLeft;
 		if (facingLeft == true) {
 			transform.eulerAngles = new Vector2 (0, 0);
 		}
 		else {
 			transform.eulerAngles = new Vector2 (0, 180);
 		}
+		facingLeft = !facingLeft;
 	}
 	void movement()
 	{
 		if (spotted == true) {
 			target = Player.transform.position;
 			transform.position = Vector2.MoveTowards (transform.position, target, moveSpeed * Time.deltaTime);
-	/*	
+			/*	
 			if (facingLeft == true) {
 				endSight.transform.position.x += 10;
 				endSight1.transform.position.x += 10;
@@ -78,6 +78,10 @@ public class PlayerSpot : MonoBehaviour {
 				endSight2.transform.position.x -= 10;
 				endSight3.transform.position.x -= 10;
 			}*/
+		} else {
+			target = endSight.transform.position;
+			transform.position = Vector2.MoveTowards (transform.position, target, moveSpeed/2 * Time.deltaTime);
 		}
+
 	}
 }
