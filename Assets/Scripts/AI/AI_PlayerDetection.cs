@@ -53,7 +53,12 @@ public class AI_PlayerDetection : MonoBehaviour {
     //By doing this we rotate the vision linecast in arc to detect the player.
     void visionSweep(){
         Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
-        isDetected = Physics2D.Linecast(sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer("Player"));
+        
+        //Creates an array that holds everything that is detected by the linecast;
+        RaycastHit2D[] rayHitArray = Physics2D.LinecastAll(sightStart.position, sightEnd.position);
+        
+        isDetected = clearSight(rayHitArray);
+        
         if(isDetected){
             inRange = true;
             //Debug.Log("In Range");
@@ -74,5 +79,36 @@ public class AI_PlayerDetection : MonoBehaviour {
         else{
             //Debug.Log("Still Detected");
         }
+    }
+    
+    
+    //Function that takes in all of the RaycastHit2D's in the LinecastAll and checks to make sure the player is not obstructed
+    //Only checks the tags of Gameobjects with 2D colliders.
+    //Enemy and camerabounds colliders should not be taken into account when dealing with line of sight
+    bool clearSight(RaycastHit2D[] hits){
+        
+        foreach (RaycastHit2D hit in hits)
+        {           
+            // ignore the enemy's own colliders (and other enemies) and the camera bounds
+            if (hit.transform.tag == "Enemy")
+                continue;
+                
+            if (hit.transform.tag == "camerabounds")
+                continue;
+            
+            Debug.Log(hit.transform.tag);
+            // if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
+            if (hit.transform.tag != "Player")
+            {
+                return false;
+            }
+            
+            //if we get here then the player is not obstructed
+            if(hit.transform.tag == "Player"){
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
