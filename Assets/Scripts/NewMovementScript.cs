@@ -34,7 +34,6 @@ public class NewMovementScript : MonoBehaviour {
     //If our player hit the jump key, then it's true that we jumped!
     if (Input.GetButtonDown("Jump") && isGrounded)
     {
-      Debug.Log("weJumped!");
       playerJumped = true;   //Our player jumped!
       playerJumping = true;  //Our player is jumping!
       jumpTimer = Time.time; //Set the time at which we jumped

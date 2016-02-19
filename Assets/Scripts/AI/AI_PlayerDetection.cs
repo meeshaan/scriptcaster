@@ -9,12 +9,14 @@ public class AI_PlayerDetection : MonoBehaviour {
     public float arcDegrees;
     public float timePeriod;
     public bool isDetected = false;
+    public bool debugCircle;
     public float radius;
     
     private float _Time;
 
     
     private bool sweepingUp = true;
+    public bool inRange = false;
    
     
     // Use this for initialization
@@ -24,10 +26,15 @@ public class AI_PlayerDetection : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Gizmos.DrawSphere(sightStart.position, radius);
-        Physics2D.CircleCast(sightStart.position, 10,);
+        //DebugExtension.DrawCircle(sightStart.position, Color.gray, radius);
+        DebugExtension.DebugCircle(sightStart.position, sightStart.up, Color.gray, radius);
         Raycasting();
         Behaviors();
 	}
+    
+    void OnDrawGizmos(){
+        if(debugCircle) DebugExtension.DrawCircle(sightStart.position, sightStart.up, Color.gray, radius);
+    }
     
     void Raycasting(){
         if(!isDetected) {
@@ -47,6 +54,10 @@ public class AI_PlayerDetection : MonoBehaviour {
     void visionSweep(){
         Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
         isDetected = Physics2D.Linecast(sightStart.position, sightEnd.position, 1 << LayerMask.NameToLayer("Player"));
+        if(isDetected){
+            inRange = true;
+            //Debug.Log("In Range");
+        }
         
         _Time = _Time + Time.deltaTime;
         float phase = Mathf.Sin(_Time / timePeriod);
@@ -55,5 +66,13 @@ public class AI_PlayerDetection : MonoBehaviour {
     
     void detectionBubble(){
         
+        inRange = Physics2D.OverlapCircle(sightStart.position, radius, 1 << LayerMask.NameToLayer("Player"));
+        if(!inRange){
+            //Debug.Log("Not Detected");
+            isDetected = false;
+        }
+        else{
+            //Debug.Log("Still Detected");
+        }
     }
 }
