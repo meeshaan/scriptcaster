@@ -54,11 +54,11 @@ public class EnemyDamageControl : MonoBehaviour {
         if (c.gameObject.tag == "blast") //Detects spell type to resolve base damage
         {
             Debug.Log("took base damage 50");
-            damage += 50; //Base damage
+            damage += 65; //Base damage
             if (typeID == 3) //Critical damage
             {
-                damage += 50;
-                Debug.Log("took critical damage, total 100");
+                damage += 65;
+                Debug.Log("took critical damage, total 130");
             }
             else if (typeID == 2) //Resisted damage
             {
@@ -185,7 +185,7 @@ public class EnemyDamageControl : MonoBehaviour {
             damage += 50; //Base damage
             if (typeID == 2) //Critical damage
             {
-                damage += 100;
+                damage += 50;
                 Debug.Log("took critical damage, total 100");
             }
             else if (typeID == 3) //Resisted damage
