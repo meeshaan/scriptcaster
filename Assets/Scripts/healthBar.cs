@@ -19,7 +19,6 @@ public class healthBar : MonoBehaviour {
 		healthSR = GameObject.FindGameObjectWithTag ("healthBar").GetComponent<SpriteRenderer> ();
 		player = GameObject.FindGameObjectWithTag ("Character Sprite").GetComponent<Animator> ();
 		//death = player.GetComponent<isDead>();
-
 	}
 	
 	// Update is called once per frame

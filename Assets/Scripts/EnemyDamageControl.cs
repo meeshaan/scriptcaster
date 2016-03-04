@@ -9,6 +9,7 @@ public class EnemyDamageControl : MonoBehaviour {
     public int health; //Base health value: 100
     public int typeID; //1==fire, 2==water, 3==wind, 4==earth
     private Vector3 healthPos;
+	public GameObject healthDrop;
 
     // Use this for initialization
     void Start()
@@ -27,6 +28,7 @@ public class EnemyDamageControl : MonoBehaviour {
         {
             gm.enemiesKilled++;
             Destroy(this.gameObject);
+			Instantiate (healthDrop, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         }
     
     }
