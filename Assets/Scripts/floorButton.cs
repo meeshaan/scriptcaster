@@ -21,7 +21,7 @@ public class floorButton : MonoBehaviour {
         {
             Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), c.gameObject.GetComponent<Collider2D>());
         }
-        else if (c.gameObject.tag == "Player" || c.gameObject.tag == "boulder")
+        else if (c.gameObject.tag == "Player" || c.gameObject.tag == "boulder" || c.gameObject.tag == "bubblebox")
         {
             active = true;
         }
