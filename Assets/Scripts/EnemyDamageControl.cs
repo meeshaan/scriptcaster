@@ -10,6 +10,7 @@ public class EnemyDamageControl : MonoBehaviour {
     public int typeID; //1==fire, 2==water, 3==wind, 4==earth
     private Vector3 healthPos;
 	public GameObject healthDrop;
+	public int healthChance;
 
     // Use this for initialization
     void Start()
@@ -28,7 +29,12 @@ public class EnemyDamageControl : MonoBehaviour {
         {
             gm.enemiesKilled++;
             Destroy(this.gameObject);
-			Instantiate (healthDrop, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+			int randomNum = Random.Range (1, 10);
+			Debug.Log (randomNum);
+			if (randomNum <= healthChance) 
+			{
+				Instantiate (healthDrop, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+			}
         }
     
     }
