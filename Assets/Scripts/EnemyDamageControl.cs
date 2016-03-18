@@ -27,6 +27,7 @@ public class EnemyDamageControl : MonoBehaviour {
     {
         if (health <= 0)
         {
+            StartCoroutine(WaitForDeathAnimations());
             gm.enemiesKilled++;
             Destroy(this.gameObject);
 			int randomNum = Random.Range (1, 10);
@@ -38,7 +39,10 @@ public class EnemyDamageControl : MonoBehaviour {
         }
     
     }
+    IEnumerator WaitForDeathAnimations() {
 
+        yield return new WaitForSeconds(5);  ///edit this for lenght of time for death animations
+    }
     void OnCollisionEnter2D(Collision2D c)
     {
         int damage = 0;
