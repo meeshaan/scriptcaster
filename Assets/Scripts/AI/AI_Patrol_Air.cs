@@ -13,7 +13,7 @@ public class AI_Patrol_Air : MonoBehaviour {
     */
 
     public GameObject detector;
-    //public GameObject endSight;
+    public GameObject endSight;
     //public Vector2 patrolTowards;
     public float patrolDistance;                //how large the enemy patrol distance is
     public float patrolSpeed;                   //how fast the enemy moves while patrolling
@@ -39,6 +39,9 @@ public class AI_Patrol_Air : MonoBehaviour {
     
     // Use this for initialization
 	void Start () {
+        
+       InvokeRepeating ("Flip", 0f, Random.Range(6f,10f)) ;
+        
 	   playerDetection = detector.GetComponent<AI_PlayerDetection>();
        Player = GameObject.FindGameObjectWithTag ("Player");
        
@@ -47,13 +50,9 @@ public class AI_Patrol_Air : MonoBehaviour {
 	}
 	
 	void Update () {
-        Target = Player.transform.position;
-        //patrolTowards = endSight.transform.position;
-	    //Casts a line between our ground checker gameobject and our player
-        //If the floor is between us and the groundchecker, this makes "isGrounded" true
-       // isGrounded = Physics2D.Linecast(transform.position, groundChecker.position, 1 << LayerMask.NameToLayer("Platform"));
-        //isBlocked = Physics2D.Linecast(transform.position, blockChecker.position, 1 << LayerMask.NameToLayer("Platform"));
         
+
+    
         //If we are grounded and not in pursuit run the patrol script
         if (playerDetection.isDetected){
             inPursuit = true;
@@ -68,56 +67,75 @@ public class AI_Patrol_Air : MonoBehaviour {
                 directionChangeDelay = false;
             }
         }
+          
 	}
     
     void FixedUpdate(){
         //If we are grounded and not in pursuit run the patrol script
-        if(!inPursuit){
-        Patrol();  
+               if(!inPursuit){
+            patrolStartingX = transform.position.x;
+            Patrol();  
         }
-        else if ( inPursuit){
+        else if (inPursuit){
+            Target = Player.transform.position;
         Pursuit();
         }
     }
     
     //When the enemy lands after being in the air this keeps track of the start of the patrol
-    void OnCollisionEnter2D(Collision2D coll){
-        if(coll.gameObject.layer == 9 ){
-            patrolStartingX = transform.position.x;
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D coll){
+    //     if(coll.gameObject.layer == 9 ){
+    //         patrolStartingX = transform.position.x;
+    //     }
+    // }
     
     //Handles the movement of the enemy when patrolling a sector
     void Patrol(){
         
-        //Checks whether we should be moving left or right based on the patrol distance or by being blocked
-        if((patrolStartingX - patrolDistance) > transform.position.x &&  movingLeft){
-            movingLeft = false;
-        }
-        else if((patrolStartingX + patrolDistance) < transform.position.x && !movingLeft){
-            movingLeft = true;
-        }
+        // if (facingLeft == true) {
+		// 	//transform.eulerAngles = new Vector2 (0, 0);
+        //     Flip();
+		// }
+		// else {
+        //     Flip();
+		// 	//transform.eulerAngles = new Vector2 (0, 180);
+        // }
+		//facingLeft = !facingLeft;
         
-        //When moveingLeft == true then we run this script to move left otherwise we move right
-        if(movingLeft){
-             //transform.position = Vector2.MoveTowards (transform.position, endSight.transform.position, patrolSpeed * Time.deltaTime);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * 10 * patrolSpeed * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y);
-        }
-        else{
-            //transform.position = Vector2.MoveTowards (transform.position, endSight.transform.position, patrolSpeed * Time.deltaTime);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(1 * 10 * patrolSpeed * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y);           
-        }
+        Target = endSight.transform.position;
+		transform.position = Vector2.MoveTowards (transform.position, Target, patrolSpeed * Time.deltaTime);
+	}
+    
+    
+        
+    //     //Checks whether we should be moving left or right based on the patrol distance or by being blocked
+    //     if((patrolStartingX - patrolDistance) > transform.position.x &&  movingLeft){
+    //         movingLeft = false;
+    //     }
+    //     else if((patrolStartingX + patrolDistance) < transform.position.x && !movingLeft){
+    //         movingLeft = true;
+    //     }
+        
+    //     //When moveingLeft == true then we run this script to move left otherwise we move right
+    //     if(movingLeft){
+    //          //transform.position = Vector2.MoveTowards (transform.position, endSight.transform.position, patrolSpeed * Time.deltaTime);
+    //         GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * 10 * patrolSpeed * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y);
+    //     }
+    //     else{
+    //         //transform.position = Vector2.MoveTowards (transform.position, endSight.transform.position, patrolSpeed * Time.deltaTime);
+    //         GetComponent<Rigidbody2D>().velocity = new Vector2(1 * 10 * patrolSpeed * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y);           
+    //     }
 
-        //checks which direction the enemy is moving and flips it to the correct side
-        if (movingLeft && !facingLeft)
-        {
-            Flip();
-        }
-        else if (!movingLeft && facingLeft)
-        {
-            Flip();
-        }        
-    }
+    //     //checks which direction the enemy is moving and flips it to the correct side
+    //     if (movingLeft && !facingLeft)
+    //     {
+    //         Flip();
+    //     }
+    //     else if (!movingLeft && facingLeft)
+    //     {
+    //         Flip();
+    //     }        
+    // }
     
     void Pursuit(){
         
