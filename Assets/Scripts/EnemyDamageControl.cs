@@ -6,11 +6,13 @@ public class EnemyDamageControl : MonoBehaviour {
     private GameObject enemy;
     private GameManager gm;
     private test T;
-    public int health; //Base health value: 100
+    public float health; //Base health value: 100
+	float maxHealth;
     public int typeID; //1==fire, 2==water, 3==wind, 4==earth
     private Vector3 healthPos;
 	public GameObject healthDrop;
 	public int healthChance;
+	public GameObject HealthBar;
 
     // Use this for initialization
     void Start()
@@ -20,6 +22,7 @@ public class EnemyDamageControl : MonoBehaviour {
         T = G.GetComponent<test>();
         
         enemy = gameObject;
+		maxHealth = health;
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class EnemyDamageControl : MonoBehaviour {
     }
     void OnCollisionEnter2D(Collision2D c)
     {
-        int damage = 0;
+		float damage = 0f;
 
         if (c.gameObject.tag == "fireball") //Detects spell type to resolve base damage
         {
@@ -206,8 +209,8 @@ public class EnemyDamageControl : MonoBehaviour {
                 Debug.Log("took resisted damage, total 25");
             }
         }
-
         health -= damage;
+		setHealthBar (health / maxHealth);
     }
 
     void OnGUI()
@@ -215,4 +218,9 @@ public class EnemyDamageControl : MonoBehaviour {
         healthPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         GUI.Label(new Rect(healthPos.x, healthPos.y, 50, 20), health.ToString());
     }
+
+	void setHealthBar(float newHealth)
+	{
+		HealthBar.transform.localScale = new Vector3(newHealth, HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
+	}
 }
