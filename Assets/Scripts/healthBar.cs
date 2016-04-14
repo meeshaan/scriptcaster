@@ -15,7 +15,7 @@ public class healthBar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = GameObject.FindGameObjectWithTag ("Player").GetComponent<healthAndDamage> ();
+		health = GameObject.Find("Player").GetComponent<healthAndDamage> ();
 		healthSR = GameObject.FindGameObjectWithTag ("healthBar").GetComponent<SpriteRenderer> ();
 		player = GameObject.FindGameObjectWithTag ("Character Sprite").GetComponent<Animator> ();
 		//death = player.GetComponent<isDead>();
