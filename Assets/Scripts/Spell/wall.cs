@@ -33,5 +33,8 @@ public class wall : MonoBehaviour {
     {
         if (c.collider.tag == "Enemy")
             Destroy(gameObject);
+        else if (c.collider.tag == "boss" || c.collider.tag == "boss_damage")
+            Destroy(gameObject);
+            
     }
 }

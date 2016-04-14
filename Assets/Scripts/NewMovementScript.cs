@@ -6,6 +6,7 @@ public class NewMovementScript : MonoBehaviour {
   public float moveSpeed;  //Our general move speed. This is effected by our
   //InputManager > Horizontal button's Gravity and Sensitivity
   //Changing the Gravity/Sensitivty will in turn result in more loose or tighter control
+  public bool inControl;
 
   public float sprintMultiplier;   //How fast to multiply our speed by when sprinting
   public float sprintDelay;        //How long until our sprint kicks in
@@ -24,13 +25,32 @@ public class NewMovementScript : MonoBehaviour {
 
   public bool facingRight = true;
   public bool isGrounded = false;             //Check to see if we are grounded
+  private GameObject gameManager;
+  public bool flungInAir;
+  
+  void Start(){
+      inControl = true;
+      gameManager = GameObject.Find("GameManager");
+  }
 
   void Update()
   {
     //Casts a line between our ground checker gameobject and our player
     //If the floor is between us and the groundchecker, this makes "isGrounded" true
-    isGrounded = Physics2D.Linecast(transform.position, groundChecker.position, 1 << LayerMask.NameToLayer("Platform"));
+    if(Physics2D.Linecast(transform.position, groundChecker.position, 1 << LayerMask.NameToLayer("Platform")) || Physics2D.Linecast(transform.position, groundChecker.position, 1 << LayerMask.NameToLayer("PlayerWall"))){
+        isGrounded = true;
+    }
+    else{
+        isGrounded = false;
+    }
 
+    if(flungInAir && gameManager.GetComponent<GameManager>().playerFlung ){
+        StartCoroutine(waitForFling());
+    }
+    if(isGrounded && !flungInAir && gameManager.GetComponent<GameManager>().playerFlung){
+        inControl = true;
+        gameManager.GetComponent<GameManager>().playerFlung = false;
+    }
     //If our player hit the jump key, then it's true that we jumped!
     if (Input.GetButtonDown("Jump") && isGrounded)
     {
@@ -53,8 +73,14 @@ public class NewMovementScript : MonoBehaviour {
     }
   }
 
-  void FixedUpdate()
-  {
+    void FixedUpdate()
+    {
+        if(inControl){
+            PlayerMovement();
+        }
+    }
+  
+  void PlayerMovement(){
     float move = Input.GetAxis("Horizontal"); //exists to check if an object should be flipped
 
     //If our player is holding the sprint button, we've held down the button for a while, and we're grounded...
@@ -103,6 +129,7 @@ public class NewMovementScript : MonoBehaviour {
       Flip();
     }
   }
+  
 
   void Flip()
   {
@@ -110,5 +137,11 @@ public class NewMovementScript : MonoBehaviour {
     Vector3 theScale = transform.localScale;
     theScale.x *= -1;
     transform.localScale = theScale;
+  }
+  
+  IEnumerator waitForFling(){
+      yield return new WaitForSeconds(0.1f);
+      flungInAir = false;
+      yield return null;
   }
 }

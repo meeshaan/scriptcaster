@@ -22,19 +22,32 @@ public class healthAndDamage : MonoBehaviour {
 	
 	}
 
-  void OnCollisionEnter2D(Collision2D coll)
-  {
-    if (coll.gameObject.tag == "Enemy" && Immune == false)
+    void OnCollisionEnter2D(Collision2D coll)
     {
-      Health -= 1;
-	  Immune = true;
-      ImmunityCounter();
-      //Debug.Log("Detected");
+        if (coll.gameObject.tag == "Enemy" && Immune == false)
+        {
+            Health -= 1;
+            Immune = true;
+            ImmunityCounter();
+            //Debug.Log("Detected");
+        } 
+        else if (coll.collider.gameObject.tag == "boss_damage" && Immune == false)
+        {
+            Health -= 1;
+            Immune = true;
+            ImmunityCounter();
+            //Debug.Log("Detected");
+        }
     }
-  }
   
-	void OnTriggerEnter2D(Collider2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
 	{
+        if(coll.GetComponent<Collider2D>().gameObject.tag == "boss_damage" && Immune == false){
+            Health -= 1;
+            Immune = true;
+            ImmunityCounter();
+            //Debug.Log("Detected");            
+        }
 		if (coll.gameObject.tag == "Fall" && Immune == false)
 		{
 			Health -= 1;
@@ -74,7 +87,6 @@ public class healthAndDamage : MonoBehaviour {
       duration -= Time.deltaTime;
 
       renderer.enabled = !renderer.enabled;
-      Debug.Log(duration);
 
       yield return new WaitForSeconds(blinkTime);
     }

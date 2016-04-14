@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	public int totalEnemiesInGame;
 	public int SpawnnedEnemies;
 	public int enemiesKilled;
+    public bool playerFlung; //If the player has no movement control as is being flung this will be true
+  
 	// Use this for initialization
 	void Start () {
 		Path1 = GameObject.FindGameObjectWithTag ("Path1");
@@ -27,12 +29,5 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetKeyDown (KeyCode.Q))
-		{ 
-			if (SlowTime == false)
-				SlowTime = true;
-			else if (SlowTime == true)
-				SlowTime = false;
-		}
 	}
 }
