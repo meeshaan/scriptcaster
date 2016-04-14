@@ -6,9 +6,13 @@ public class EnemyDamageControl : MonoBehaviour {
     private GameObject enemy;
     private GameManager gm;
     private test T;
-    public int health; //Base health value: 100
+    public float health; //Base health value: 100
+	float maxHealth;
     public int typeID; //1==fire, 2==water, 3==wind, 4==earth
     private Vector3 healthPos;
+	public GameObject healthDrop;
+	public int healthChance;
+	public GameObject HealthBar;
 
     // Use this for initialization
     void Start()
@@ -18,6 +22,7 @@ public class EnemyDamageControl : MonoBehaviour {
         T = G.GetComponent<test>();
         
         enemy = gameObject;
+		maxHealth = health;
     }
 
     // Update is called once per frame
@@ -25,15 +30,25 @@ public class EnemyDamageControl : MonoBehaviour {
     {
         if (health <= 0)
         {
+            StartCoroutine(WaitForDeathAnimations());
             gm.enemiesKilled++;
             Destroy(this.gameObject);
+			int randomNum = Random.Range (1, 10);
+			Debug.Log (randomNum);
+			if (randomNum <= healthChance) 
+			{
+				Instantiate (healthDrop, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+			}
         }
     
     }
+    IEnumerator WaitForDeathAnimations() {
 
+        yield return new WaitForSeconds(5);  ///edit this for lenght of time for death animations
+    }
     void OnCollisionEnter2D(Collision2D c)
     {
-        int damage = 0;
+		float damage = 0f;
 
         if (c.gameObject.tag == "fireball") //Detects spell type to resolve base damage
         {
@@ -54,11 +69,11 @@ public class EnemyDamageControl : MonoBehaviour {
         if (c.gameObject.tag == "blast") //Detects spell type to resolve base damage
         {
             Debug.Log("took base damage 50");
-            damage += 50; //Base damage
+            damage += 65; //Base damage
             if (typeID == 3) //Critical damage
             {
-                damage += 50;
-                Debug.Log("took critical damage, total 100");
+                damage += 65;
+                Debug.Log("took critical damage, total 130");
             }
             else if (typeID == 2) //Resisted damage
             {
@@ -185,7 +200,7 @@ public class EnemyDamageControl : MonoBehaviour {
             damage += 50; //Base damage
             if (typeID == 2) //Critical damage
             {
-                damage += 100;
+                damage += 50;
                 Debug.Log("took critical damage, total 100");
             }
             else if (typeID == 3) //Resisted damage
@@ -194,8 +209,8 @@ public class EnemyDamageControl : MonoBehaviour {
                 Debug.Log("took resisted damage, total 25");
             }
         }
-
         health -= damage;
+		setHealthBar (health / maxHealth);
     }
 
     void OnGUI()
@@ -203,4 +218,9 @@ public class EnemyDamageControl : MonoBehaviour {
         healthPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         GUI.Label(new Rect(healthPos.x, healthPos.y, 50, 20), health.ToString());
     }
+
+	void setHealthBar(float newHealth)
+	{
+		HealthBar.transform.localScale = new Vector3(newHealth, HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
+	}
 }

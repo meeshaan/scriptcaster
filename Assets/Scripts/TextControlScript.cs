@@ -88,6 +88,11 @@ public class TextControlScript : MonoBehaviour {
 	//public Text pauseMenu2;
 	float resumeSpeed;
 
+	//spell tiers
+	public bool spellTier1;
+	public bool spellTier2;
+	public bool spellTier3;
+
 	// Use this for initialization
 	void Start () {
         //cooldowns
@@ -110,6 +115,11 @@ public class TextControlScript : MonoBehaviour {
 
 		//slomo
 		Time.timeScale = 1.0f;
+
+		//spell tiers
+		spellTier1 = false;
+		spellTier2 = false;
+		spellTier3 = false;
 	}
 
 //----------------------------------------------------------------
@@ -177,7 +187,7 @@ public class TextControlScript : MonoBehaviour {
 		if (hasReturned == true){
 			player.SetBool("writing", false);
             //----------------------fire-------------------------------
-			if((currentActive + stringToEdit).ToLower() == "fireball"){
+			if((currentActive + stringToEdit).ToLower() == "fireball" && spellTier1 == true){
 				if (GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{
 					//Transform newball = (Transform)Instantiate (fireball, new Vector3(0, 0, 0), Quaternion.identity);
@@ -194,7 +204,7 @@ public class TextControlScript : MonoBehaviour {
                 fireBook.enabled = true;
                 openBook.enabled = false;
 			}
-            else if ((currentActive + stringToEdit).ToLower() == "fireflare")
+			else if ((currentActive + stringToEdit).ToLower() == "fireflare" && spellTier3 == true)
             {
 				//Transform newcube = (Transform)Instantiate (firecube, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform fcube = (Transform)Instantiate(firecube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -204,7 +214,7 @@ public class TextControlScript : MonoBehaviour {
                 fireBook.enabled = true;
                 openBook.enabled = false;
 			}
-            else if ((currentActive + stringToEdit).ToLower() == "fireblast")
+			else if ((currentActive + stringToEdit).ToLower() == "fireblast" && spellTier2 == true)
             {
 				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{
@@ -223,7 +233,7 @@ public class TextControlScript : MonoBehaviour {
 			}
 
             //----------------------water-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "waterbubble")
+			if ((currentActive + stringToEdit).ToLower() == "waterbubble" && spellTier1 == true)
             {
                 //Transform newball = (Transform)Instantiate(waterball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform wBall = (Transform)Instantiate(waterball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -233,7 +243,7 @@ public class TextControlScript : MonoBehaviour {
                 waterBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "waterdroplet")
+			else if ((currentActive + stringToEdit).ToLower() == "waterdroplet" && spellTier2 == true)
             {
 				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{
@@ -252,7 +262,7 @@ public class TextControlScript : MonoBehaviour {
                 openBook.enabled = false;
 
             }
-            else if ((currentActive + stringToEdit).ToLower() == "waterspout")
+			else if ((currentActive + stringToEdit).ToLower() == "waterspout" && spellTier3 == true)
             {
                 StartCoroutine("goSpout");
                 //Transform newcap = (Transform)Instantiate(watercap, new Vector3(0, 0, 0), Quaternion.identity);
@@ -263,7 +273,7 @@ public class TextControlScript : MonoBehaviour {
             }
 
             //----------------------air-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "airgust")
+			if ((currentActive + stringToEdit).ToLower() == "airgust" && spellTier3 == true)
             {
 				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{
@@ -281,7 +291,7 @@ public class TextControlScript : MonoBehaviour {
                 airBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "airlift")
+			else if ((currentActive + stringToEdit).ToLower() == "airlift" && spellTier2 == true)
             {
                 //Transform newcube = (Transform)Instantiate(aircube, new Vector3(0, 0, 0), Quaternion.identity);
                 GameObject pos = GameObject.Find("GroundCheck");
@@ -292,7 +302,7 @@ public class TextControlScript : MonoBehaviour {
                 airBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "airslash")
+			else if ((currentActive + stringToEdit).ToLower() == "airslash" && spellTier1 == true)
             {
 				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{
@@ -312,7 +322,7 @@ public class TextControlScript : MonoBehaviour {
             }
 
             //----------------------earth-------------------------------
-            if ((currentActive + stringToEdit).ToLower() == "earthrock")
+			if ((currentActive + stringToEdit).ToLower() == "earthrock" && spellTier2 == true)
             {
                 //Transform newball = (Transform)Instantiate(earthball, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform eBall = (Transform)Instantiate(earthball, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -322,7 +332,7 @@ public class TextControlScript : MonoBehaviour {
                 earthBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "earthboulder")
+			else if ((currentActive + stringToEdit).ToLower() == "earthboulder" && spellTier3 == true)
             {
                 //Transform newcube = (Transform)Instantiate(earthcube, new Vector3(0, 0, 0), Quaternion.identity);
                 Transform eCube = (Transform)Instantiate(earthcube, this.gameObject.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
@@ -332,7 +342,7 @@ public class TextControlScript : MonoBehaviour {
                 earthBook.enabled = true;
                 openBook.enabled = false;
             }
-            else if ((currentActive + stringToEdit).ToLower() == "earthwall")
+			else if ((currentActive + stringToEdit).ToLower() == "earthwall" && spellTier1 == true)
             {
 				if (!GameObject.Find("Player").GetComponent<NewMovementScript>().facingRight)
 				{

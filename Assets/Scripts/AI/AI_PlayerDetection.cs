@@ -95,11 +95,14 @@ public class AI_PlayerDetection : MonoBehaviour {
                 
             if (hit.transform.tag == "camerabounds")
                 continue;
+            if (hit.transform.tag == "Untagged")
+                continue;
             
             Debug.Log(hit.transform.tag);
             // if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
             if (hit.transform.tag != "Player")
             {
+                Debug.Log(hit.transform.tag);
                 return false;
             }
             

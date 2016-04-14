@@ -14,9 +14,6 @@ public class bubble : MonoBehaviour {
     void Start()
     {
         rend = GetComponent<Renderer>();
-        pl= GameObject.FindGameObjectWithTag("Player");
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pl.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pl.GetComponent<CircleCollider2D>());
 		audio = gameObject.GetComponent<AudioSource> ();
  
     }
@@ -43,13 +40,14 @@ public class bubble : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.collider.tag != "Player") {
+        if (c.collider.tag != "Player" && c.collider.tag != "bubblebox") {
 			audio.Play ();
 			Destroy (gameObject);
 		}
-        else
+        else if (c.collider.tag == "Player" || c.collider.tag == "bubblebox")
         {
-            
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), c.gameObject.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), c.gameObject.GetComponent<CircleCollider2D>());
         }
     }
 }

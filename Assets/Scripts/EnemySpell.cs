@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class wall : MonoBehaviour {
+public class EnemySpell : MonoBehaviour {
 
     bool seen = false;
     Renderer rend;
-    public float timer = 10.0f;
-    int strength = 1;
+    public int type = 1;
     // Use this for initialization
     void Start()
     {
@@ -21,20 +20,15 @@ public class wall : MonoBehaviour {
 
         if (seen && !rend.isVisible)
             Destroy(gameObject);
-
-        timer -= Time.deltaTime;
-
-        if (timer <= 0)
-            Destroy(gameObject);
-
     }
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.collider.tag == "Enemy")
+        if (c.gameObject.tag == "Enemy")
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), c.gameObject.GetComponent<Collider2D>());
+        }
+        else
             Destroy(gameObject);
-        else if (c.collider.tag == "boss" || c.collider.tag == "boss_damage")
-            Destroy(gameObject);
-            
     }
 }
