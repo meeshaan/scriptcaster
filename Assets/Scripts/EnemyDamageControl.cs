@@ -213,12 +213,6 @@ public class EnemyDamageControl : MonoBehaviour {
 		setHealthBar (health / maxHealth);
     }
 
-    void OnGUI()
-    {
-        healthPos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        GUI.Label(new Rect(healthPos.x, healthPos.y, 50, 20), health.ToString());
-    }
-
 	void setHealthBar(float newHealth)
 	{
 		HealthBar.transform.localScale = new Vector3(newHealth, HealthBar.transform.localScale.y, HealthBar.transform.localScale.z);
