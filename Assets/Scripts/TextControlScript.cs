@@ -117,7 +117,7 @@ public class TextControlScript : MonoBehaviour {
 		Time.timeScale = 1.0f;
 
 		//spell tiers
-		spellTier1 = false;
+		spellTier1 = true;
 		spellTier2 = false;
 		spellTier3 = false;
 	}
