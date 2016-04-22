@@ -32,7 +32,7 @@ public class NewMovementScript : MonoBehaviour {
       inControl = true;
       gameManager = GameObject.Find("GameManager");
   }
-
+  
   void Update()
   {
     //Casts a line between our ground checker gameobject and our player
@@ -75,6 +75,7 @@ public class NewMovementScript : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //Physics2D.IgnoreLayerCollision (8, 9, groundChecker.transform.position < );
         if(inControl){
             PlayerMovement();
         }

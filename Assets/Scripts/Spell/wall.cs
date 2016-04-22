@@ -35,6 +35,12 @@ public class wall : MonoBehaviour {
             Destroy(gameObject);
         else if (c.collider.tag == "boss" || c.collider.tag == "boss_damage")
             Destroy(gameObject);
-            
+    }
+    
+    void OnCollisionStay2d(Collision2D c){
+        if (c.collider.tag == "Enemy")
+            Destroy(gameObject);
+        else if (c.collider.tag == "boss" || c.collider.tag == "boss_damage")
+            Destroy(gameObject);
     }
 }

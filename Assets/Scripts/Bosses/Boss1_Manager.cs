@@ -9,6 +9,7 @@ public class Boss1_Manager : MonoBehaviour {
     public bool stunned;
     public bool isattacking;
     public bool canbreakwall;
+    public bool attackStarted;
     
 
     void Start(){
@@ -16,6 +17,7 @@ public class Boss1_Manager : MonoBehaviour {
         health = 150f;
         stunned = false;
         canbreakwall = false;
+        attackStarted = false;
     }
     
     void Update(){
@@ -27,6 +29,8 @@ public class Boss1_Manager : MonoBehaviour {
     }
     
     void SetHealth(float newhealth){
-        healthbar.transform.localScale = new Vector3(newhealth, healthbar.transform.localScale.y, healthbar.transform.localScale.x);
+        if(healthbar != null){
+            healthbar.transform.localScale = new Vector3(newhealth, healthbar.transform.localScale.y, healthbar.transform.localScale.x);
+        }
     }
 }

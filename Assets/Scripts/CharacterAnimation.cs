@@ -20,7 +20,7 @@ public class CharacterAnimation : MonoBehaviour {
 	}
 
 	void runningAnim(){
-		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)) {
 			spriteAnim.SetBool ("running", true);
 		} else {
 			spriteAnim.SetBool ("running", false);
