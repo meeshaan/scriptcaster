@@ -84,9 +84,7 @@ public class TextControlScript : MonoBehaviour {
 
 	//for pause menu
 	bool isPaused;
-	//public Text pauseMenu1;
-	//public Text pauseMenu2;
-	float resumeSpeed;
+
 
 	//spell tiers
 	public bool spellTier1;
@@ -107,7 +105,7 @@ public class TextControlScript : MonoBehaviour {
         earthTime = coolTime;
 
         //GUI style
-        invisibleBox.textField.fontSize = Screen.width / 15;
+        invisibleBox.textField.fontSize = Screen.width / 18;
 
 		//pause menu
 		isPaused = false;
@@ -424,6 +422,29 @@ public class TextControlScript : MonoBehaviour {
             airCoolTimer.text = airTime.ToString("0");
         if (earthCool == true)
             earthCoolTimer.text = earthTime.ToString("0");
+
+		/*//---------------------------------------------------------------------------------------------------------------------------------------------
+		//PAUSING
+
+		// Enable pause menu
+		if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+		{
+			Time.timeScale = 0.0f;
+			pauseBook.enabled = true;
+			//pauseMenu1.enabled = true;
+			//pauseMenu2.enabled = true;
+			isPaused = true;
+		}
+
+		// disable pause menu
+		else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+		{
+			Time.timeScale = 1.0f;
+			pauseBook.enabled = false;
+			//pauseMenu1.enabled = false;
+			//pauseMenu2.enabled = false;
+			isPaused = false;
+		}*/
 	}
 
 
@@ -458,11 +479,8 @@ public class TextControlScript : MonoBehaviour {
 		//for pausing
 		else if (e.keyCode == KeyCode.Escape && !isPaused) 
 		{
-			resumeSpeed = Time.timeScale;
 			Time.timeScale = 0.0f;
 			pauseBook.enabled = true;
-			//pauseMenu1.enabled = true;
-			//pauseMenu2.enabled = true;
 			isPaused = true;
 		}
 		//returning 
@@ -473,10 +491,8 @@ public class TextControlScript : MonoBehaviour {
 		//for resuming
 		else if (e.keyCode == KeyCode.R && isPaused)
 		{
-			Time.timeScale = resumeSpeed;
+			Time.timeScale = 1.0f;
 			pauseBook.enabled = false;
-			//pauseMenu1.enabled = false;
-			//pauseMenu2.enabled = false;
 			isPaused = false;
 		}
         //if 1 key has been entered - fire
@@ -535,13 +551,13 @@ public class TextControlScript : MonoBehaviour {
         
         //displaying text field, custom position place on screen. adjusted for screen width and height
         else if (hasReturned == false && controlUp == true && currentActive == "fire")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
+			stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - ((Screen.width/4)/2)), (Screen.height - (Screen.height / 5)), Screen.width / 4, Screen.height / 16), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "water")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
+			stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - ((Screen.width/4)/2)), (Screen.height - (Screen.height / 5)), Screen.width / 4, Screen.height / 16), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "air")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
+			stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - ((Screen.width/4)/2)), (Screen.height - (Screen.height / 5)), Screen.width / 4, Screen.height / 16), stringToEdit, 100);
         else if (hasReturned == false && controlUp == true && currentActive == "earth")
-            stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - 150), (Screen.height - (Screen.height / 4.50f)), 300, 100), stringToEdit, 100);
+			stringToEdit = GUI.TextField(new Rect((Screen.width / 2 - ((Screen.width/4)/2)), (Screen.height - (Screen.height / 5)), Screen.width / 4, Screen.height / 16), stringToEdit, 100);
 
 	}
 
