@@ -1,42 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class flare : MonoBehaviour {
+public class nova2 : MonoBehaviour {
 
     bool seen = false;
     Renderer rend;
     public int type = 1;
+    float timer = 1.0f;
     GameObject pl;
-    public Transform nova;
+
     // Use this for initialization
     void Start()
     {
-        pl = GameObject.FindGameObjectWithTag("Player");
         rend = GetComponent<Renderer>();
+        pl = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pl.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), pl.GetComponent<CircleCollider2D>());
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
+
         if (rend.isVisible)
             seen = true;
 
         if (seen && !rend.isVisible)
             Destroy(gameObject);
+
+        if (timer <= 0)
+            Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (c.collider.tag != "Player")
+        if (c.collider.tag == "Enemy")
         {
-            Vector3 newPos = gameObject.transform.position;
-            pl.gameObject.transform.position = newPos;
-
-            newPos.x = newPos.x + 0.1f;
-            newPos.z++;
-            newPos.y = newPos.y + 0.15f;
-
-            Transform fNova = (Transform)Instantiate(nova, newPos, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(gameObject);
         }
     }
