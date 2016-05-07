@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\AI_Patrol_Air.cs" />
      <Compile Include="Assets\Boss2Damage.cs" />
+     <Compile Include="Assets\Boss2Movement.cs" />
      <Compile Include="Assets\BossFlipScript.cs" />
      <Compile Include="Assets\DebugDrawingExtension\DebugExtension.cs" />
      <Compile Include="Assets\DebugDrawingExtension\Example\Example.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\Bosses\Boss1_Manager.cs" />
      <Compile Include="Assets\Scripts\Bosses\Boss1_NormalZone.cs" />
      <Compile Include="Assets\Scripts\Bosses\Boss1_Weakspot.cs" />
+     <Compile Include="Assets\Scripts\Bosses\Boss3_spellcasting.cs" />
      <Compile Include="Assets\Scripts\Bosses\boss1_spike.cs" />
      <Compile Include="Assets\Scripts\Bosses\boss_back_detection.cs" />
      <Compile Include="Assets\Scripts\Bosses\tester.cs" />
@@ -82,6 +84,7 @@
      <Compile Include="Assets\Scripts\PathDefinition.cs" />
      <Compile Include="Assets\Scripts\Shockwave.cs" />
      <Compile Include="Assets\Scripts\Spell\A.cs" />
+     <Compile Include="Assets\Scripts\Spell\LazorScript.cs" />
      <Compile Include="Assets\Scripts\Spell\boulder.cs" />
      <Compile Include="Assets\Scripts\Spell\bubble.cs" />
      <Compile Include="Assets\Scripts\Spell\drop.cs" />
@@ -117,6 +120,7 @@
      <Compile Include="Assets\Scripts\healthBar.cs" />
      <Compile Include="Assets\Scripts\healthDrop.cs" />
      <Compile Include="Assets\Scripts\isDead.cs" />
+     <Compile Include="Assets\Scripts\mentorAnimation.cs" />
      <Compile Include="Assets\Scripts\rope.cs" />
      <Compile Include="Assets\Scripts\suspendedObject.cs" />
      <Compile Include="Assets\Scripts\test.cs" />

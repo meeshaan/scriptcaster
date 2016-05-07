@@ -23,6 +23,7 @@ public class Boss1_Manager : MonoBehaviour {
     void Update(){
         if (health <= 0){
             Destroy(GameObject.Find("Boss1"));
+			StartCoroutine(Win ());
         }
         
         SetHealth(health/maxhealth);
@@ -33,4 +34,11 @@ public class Boss1_Manager : MonoBehaviour {
             healthbar.transform.localScale = new Vector3(newhealth, healthbar.transform.localScale.y, healthbar.transform.localScale.x);
         }
     }
+
+	IEnumerator Win()
+	{
+		Debug.Log("Victory!");
+		yield return new WaitForSeconds(1.0f);
+		Application.LoadLevel ("win");
+	}
 }
