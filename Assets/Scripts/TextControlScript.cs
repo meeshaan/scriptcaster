@@ -116,8 +116,8 @@ public class TextControlScript : MonoBehaviour {
 
 		//spell tiers
 		spellTier1 = true;
-		spellTier2 = false;
-		spellTier3 = false;
+		spellTier2 = true;
+		spellTier3 = true;
 	}
 
 //----------------------------------------------------------------
