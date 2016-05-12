@@ -7,6 +7,7 @@ public class flare : MonoBehaviour {
     Renderer rend;
     public int type = 1;
     GameObject pl;
+    public Transform nova;
     // Use this for initialization
     void Start()
     {
@@ -28,8 +29,14 @@ public class flare : MonoBehaviour {
     {
         if (c.collider.tag != "Player")
         {
-            Vector2 newPos = gameObject.transform.position;
+            Vector3 newPos = gameObject.transform.position;
             pl.gameObject.transform.position = newPos;
+
+            newPos.x = newPos.x + 0.1f;
+            newPos.z++;
+            newPos.y = newPos.y + 0.15f;
+
+            Transform fNova = (Transform)Instantiate(nova, newPos, Quaternion.Euler(new Vector3(0, 0, 0)));
             Destroy(gameObject);
         }
     }

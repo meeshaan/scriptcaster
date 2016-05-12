@@ -2,19 +2,21 @@
 using System.Collections;
 
 public class healthAndDamage : MonoBehaviour {
-  public int Health = 3;
-  public bool Immune = false;
-  public Vector3 spawnPoint;
-  private CameraController cc;
-  private SpriteRenderer renderer;
-  public float cameraWaitDuration = 3f;
+	public int Health;
+	public int maxHealth;
+	public bool Immune = false;
+	public Vector3 spawnPoint;
+	private CameraController cc;
+	private SpriteRenderer renderer;
+	public float cameraWaitDuration = 3f;
 
 	// Use this for initialization
 	void Start () {
-    GameObject sprite = GameObject.Find("Character Sprite");
-    renderer = sprite.GetComponent<SpriteRenderer>();
-	cc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
-	
+	    GameObject sprite = GameObject.Find("Character Sprite");
+	    renderer = sprite.GetComponent<SpriteRenderer>();
+		cc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+
+		maxHealth = Health;
 	}
 	
 	// Update is called once per frame

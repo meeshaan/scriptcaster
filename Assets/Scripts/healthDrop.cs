@@ -24,9 +24,9 @@ public class healthDrop : MonoBehaviour {
 		}
 		else if (c.gameObject.tag == "Player"){
 			Destroy(this.gameObject);
-			if (health.Health < 4)
+			if (health.Health < health.maxHealth)
 			{
-				health.Health++;
+				health.Health = health.maxHealth;
 			}
 		}
 	}
