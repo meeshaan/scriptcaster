@@ -65,6 +65,8 @@
      <Compile Include="Assets\Scripts\Bosses\Boss1_NormalZone.cs" />
      <Compile Include="Assets\Scripts\Bosses\Boss1_Weakspot.cs" />
      <Compile Include="Assets\Scripts\Bosses\Boss3_spellcasting.cs" />
+     <Compile Include="Assets\Scripts\Bosses\Final_Boss_Movement.cs" />
+     <Compile Include="Assets\Scripts\Bosses\Final_Boss_manager.cs" />
      <Compile Include="Assets\Scripts\Bosses\boss1_spike.cs" />
      <Compile Include="Assets\Scripts\Bosses\boss_back_detection.cs" />
      <Compile Include="Assets\Scripts\Bosses\tester.cs" />
