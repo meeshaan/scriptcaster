@@ -183,7 +183,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.02, y: 16.712503, z: -0.83}
+  m_LocalPosition: {x: 96.77, y: 2.3, z: -0.89}
   m_LocalScale: {x: 0.11670821, y: 0.1167082, z: 0.1167082}
   m_Children:
   - {fileID: 406118}
@@ -245,9 +245,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: f4b45ce30a466f247b86223176341fae, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.51670474, y: -2.9143848}
+  m_Offset: {x: 0.24285524, y: -1.4244908}
   serializedVersion: 2
-  m_Size: {x: 7.79248, y: 6.870704}
+  m_Size: {x: 12.232852, y: 9.850502}
 --- !u!95 &9544230
 Animator:
   serializedVersion: 3
@@ -257,7 +257,7 @@ Animator:
   m_GameObject: {fileID: 126034}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27934d5266c1f1f4aa079631a7b58d8d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -277,9 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 119710}
-  patrolDistance: 1
-  patrolSpeed: 8
-  pursuitSpeed: 12
+  patrolDistance: 0.25
+  patrolSpeed: 4
+  pursuitSpeed: 8
   groundChecker: {fileID: 406118}
   blockChecker: {fileID: 417986}
   isGrounded: 0

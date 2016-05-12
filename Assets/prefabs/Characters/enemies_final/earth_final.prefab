@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 463112}
-  - 114: {fileID: 11431278}
+  - 114: {fileID: 11466034}
   m_Layer: 11
   m_Name: EnemyCastPoint
   m_TagString: Enemy
@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.03, y: 1.85, z: -1.2}
+  m_LocalPosition: {x: 110.069916, y: 3.5987835, z: -1.31}
   m_LocalScale: {x: 0.15519103, y: 0.15519111, z: 0.15519111}
   m_Children:
   - {fileID: 418756}
@@ -273,9 +273,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: f4b45ce30a466f247b86223176341fae, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.0587662, y: -0.6192571}
+  m_Offset: {x: -0.058747765, y: 0.8645504}
   serializedVersion: 2
-  m_Size: {x: 12.771417, y: 6.217253}
+  m_Size: {x: 12.771417, y: 9.184865}
 --- !u!95 &9524772
 Animator:
   serializedVersion: 3
@@ -285,7 +285,7 @@ Animator:
   m_GameObject: {fileID: 140776}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21deee158ee5e6249935b227e55bc129, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -363,22 +363,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11431278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0998781f466c398409634840147972f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detect: {fileID: 0}
-  spell: {fileID: 483894, guid: 75e8cae4e09f3fa46b20cc650e1f61b4, type: 2}
-  projSpeed: 150
-  fireInterval: 3.75
-  active: 0
 --- !u!114 &11459928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,8 +397,24 @@ MonoBehaviour:
   health: 150
   typeID: 4
   healthDrop: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
-  healthChance: 1
+  healthChance: 5
   HealthBar: {fileID: 156156}
+--- !u!114 &11466034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ce43bb7bc58bd4db64299d85db0535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detect: {fileID: 0}
+  spell: {fileID: 483894, guid: 504e86c824d5d4b49ada065dc9e3f8ec, type: 2}
+  projSpeed: 150
+  fireInterval: 3.75
+  active: 0
 --- !u!114 &11476178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,14 +475,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 162826}
-  patrolDistance: 1.5
-  patrolSpeed: 3
-  pursuitSpeed: 5
+  patrolDistance: 0.1
+  patrolSpeed: 2
+  pursuitSpeed: 4
   groundChecker: {fileID: 418756}
   blockChecker: {fileID: 495816}
   isGrounded: 1
   isBlocked: 0
-  inPursuit: 0
+  inPursuit: 1
   facingLeft: 1
   detectPlayer: 0
 --- !u!212 &21243560

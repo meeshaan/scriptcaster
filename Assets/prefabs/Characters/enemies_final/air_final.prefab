@@ -280,7 +280,7 @@ MonoBehaviour:
   health: 125
   typeID: 3
   healthDrop: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
-  healthChance: 1
+  healthChance: 5
   HealthBar: {fileID: 196366}
 --- !u!114 &11420098
 MonoBehaviour:
