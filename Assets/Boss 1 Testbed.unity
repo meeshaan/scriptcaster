@@ -2239,7 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOnBack: 0
-  boss: {fileID: 0}
+  boss: {fileID: 1001602818}
 --- !u!61 &1295620472
 BoxCollider2D:
   m_ObjectHideFlags: 0
