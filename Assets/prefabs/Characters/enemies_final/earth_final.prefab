@@ -371,7 +371,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 162826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae7c7247351025459c0b2afc8e918ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c62ca721e41955647af6dd009de14688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sightStart: {fileID: 445114}
@@ -391,10 +391,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 140776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3673dec4cb05fb4bba805d1cea6db4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0561f413bda0cb64384f666f2663728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 100
   typeID: 4
   healthDrop: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
   healthChance: 5
@@ -471,18 +471,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 140776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c16de7005d692439bbdef363a477b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c0ac505c1c118b47a3c500e8547e723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detector: {fileID: 162826}
-  patrolDistance: 0.1
+  patrolDistance: 1
   patrolSpeed: 2
   pursuitSpeed: 4
   groundChecker: {fileID: 418756}
   blockChecker: {fileID: 495816}
-  isGrounded: 1
+  isGrounded: 0
   isBlocked: 0
-  inPursuit: 1
+  inPursuit: 0
   facingLeft: 1
   detectPlayer: 0
 --- !u!212 &21243560
@@ -628,7 +628,39 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: patrolDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: patrolSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pursuitSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: typeID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: healthChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 107692, guid: 11b6efaa6d255a740a6515b3353b9d49, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140776}
