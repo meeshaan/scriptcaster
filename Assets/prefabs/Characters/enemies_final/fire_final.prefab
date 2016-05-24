@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 426894}
-  - 114: {fileID: 11489946}
+  - 114: {fileID: 11466232}
   m_Layer: 11
   m_Name: startSight
   m_TagString: Enemy
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 145.6, y: 5.77, z: 0}
+  m_LocalPosition: {x: 140.83, y: 5.76, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 426894}
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detector: {fileID: 107776}
   endSight: {fileID: 141856}
-  patrolDistance: 0.1
+  patrolDistance: 3
   patrolSpeed: 1
   pursuitSpeed: 2
   groundChecker: {fileID: 0}
@@ -301,7 +301,7 @@ MonoBehaviour:
   inPursuit: 0
   facingLeft: 1
   detectPlayer: 0
-  Player: {fileID: 107692, guid: 11b6efaa6d255a740a6515b3353b9d49, type: 2}
+  Player: {fileID: 0}
   Target: {x: 0, y: 0}
 --- !u!114 &11428872
 MonoBehaviour:
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 188948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3673dec4cb05fb4bba805d1cea6db4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0561f413bda0cb64384f666f2663728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 75
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794c95b30b1a2ec459dad2592c2a041c, type: 3}
   m_Name: 
@@ -388,6 +388,26 @@ MonoBehaviour:
   moveSpeed: 1.2
   rotationSpeed: 0.6
   slowPercent: 0.15
+--- !u!114 &11466232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62ca721e41955647af6dd009de14688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightStart: {fileID: 426894}
+  sightEnd: {fileID: 470684}
+  startingAngle: 45
+  arcDegrees: 45
+  timePeriod: 0.15
+  isDetected: 0
+  debugCircle: 0
+  radius: 10
+  inRange: 0
 --- !u!114 &11479674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,26 +429,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11489946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae7c7247351025459c0b2afc8e918ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sightStart: {fileID: 426894}
-  sightEnd: {fileID: 470684}
-  startingAngle: 0
-  arcDegrees: 90
-  timePeriod: 0.05
-  isDetected: 0
-  debugCircle: 0
-  radius: 10
-  inRange: 0
 --- !u!114 &11496702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightStart: {fileID: 426894}
-  sightEnd: {fileID: 470684}
+  sightEnd: {fileID: 458108}
   isDetected: 0
 --- !u!212 &21223510
 SpriteRenderer:
@@ -606,7 +606,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: healthDrop
       value: 
-      objectReference: {fileID: 164482, guid: 8af7e33b9e5904fbfad7ebd7a827b61b, type: 2}
+      objectReference: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
     - target: {fileID: 0}
       propertyPath: healthChance
       value: 5
@@ -639,6 +639,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: pursuitSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: typeID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sightEnd
+      value: 
+      objectReference: {fileID: 458108}
+    - target: {fileID: 0}
+      propertyPath: startingAngle
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

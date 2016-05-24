@@ -258,13 +258,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 121380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eff9f44b78b7b84cb71e1a63ccefb79, type: 3}
+  m_Script: {fileID: 11500000, guid: 3659096c88af55940bd89505a5903d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detect: {fileID: 0}
-  spell: {fileID: 461714, guid: e860e5008b12ec644984aa2260ff8b5e, type: 2}
-  projSpeed: 10
-  fireInterval: 2.5
+  spell: {fileID: 0}
+  projSpeed: 0
+  fireInterval: 0
   active: 0
 --- !u!114 &11411166
 MonoBehaviour:
@@ -274,14 +274,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 194440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3673dec4cb05fb4bba805d1cea6db4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0561f413bda0cb64384f666f2663728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 125
+  health: 75
   typeID: 3
   healthDrop: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
   healthChance: 5
-  HealthBar: {fileID: 196366}
+  HealthBar: {fileID: 0}
 --- !u!114 &11420098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,17 +290,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 103346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dae7c7247351025459c0b2afc8e918ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c62ca721e41955647af6dd009de14688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sightStart: {fileID: 463894}
-  sightEnd: {fileID: 473010}
+  sightStart: {fileID: 0}
+  sightEnd: {fileID: 0}
   startingAngle: 0
-  arcDegrees: 90
-  timePeriod: 0.05
+  arcDegrees: 0
+  timePeriod: 0
   isDetected: 0
   debugCircle: 0
-  radius: 10
+  radius: 0
   inRange: 0
 --- !u!114 &11423418
 MonoBehaviour:
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794c95b30b1a2ec459dad2592c2a041c, type: 3}
   m_Name: 
@@ -394,9 +394,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detector: {fileID: 103346}
   endSight: {fileID: 102746}
-  patrolDistance: 10
-  patrolSpeed: 0.1
-  pursuitSpeed: 0.25
+  patrolDistance: 3
+  patrolSpeed: 1
+  pursuitSpeed: 2
   groundChecker: {fileID: 0}
   blockChecker: {fileID: 0}
   isGrounded: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   inPursuit: 0
   facingLeft: 1
   detectPlayer: 0
-  Player: {fileID: 107692, guid: 11b6efaa6d255a740a6515b3353b9d49, type: 2}
+  Player: {fileID: 0}
   Target: {x: 0, y: 0}
 --- !u!114 &11470308
 MonoBehaviour:
@@ -629,7 +629,43 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: typeID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthDrop
+      value: 
+      objectReference: {fileID: 164482, guid: d102c2b79fcd01544ab600b22ab09bd9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: healthChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: patrolDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: patrolSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pursuitSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194440}

@@ -48,19 +48,6 @@ Transform:
   m_Father: {fileID: 440488}
   m_RootOrder: 0
 --- !u!4 &440488
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117802}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.405413, y: 10.279816, z: -3.328125}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children:
-  - {fileID: 427360}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!50 &5027984
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
