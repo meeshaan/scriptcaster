@@ -4,6 +4,7 @@ using System.Collections;
 public class Final_Boss_Movement : MonoBehaviour {
     
     public GameObject Player;
+    public GameObject bossManager;
     public float speed;
     public float distanceToChange;
     
@@ -24,7 +25,7 @@ public class Final_Boss_Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        stage = 0;
+        stage = 1;
         toPosition = 0;
         timeToDelay = 0;
         inCoroutine = false;
@@ -101,7 +102,7 @@ public class Final_Boss_Movement : MonoBehaviour {
             if(!inCoroutine && readyToSwitch){
                 inCoroutine = true;
                 readyToSwitch = false;
-                timeToDelay = 1.5f;
+                timeToDelay = 2.5f;
                 StartCoroutine("position2MoveCo", timeToDelay);
             }else if(!inCoroutine && !readyToSwitch){
                 readyToSwitch = true;
@@ -161,7 +162,7 @@ public class Final_Boss_Movement : MonoBehaviour {
             if(!inCoroutine && readyToSwitch){
                 inCoroutine = true;
                 readyToSwitch = false;
-                timeToDelay = 1;
+                timeToDelay = 2.5f;
                 StartCoroutine("position3MoveCo", timeToDelay);
             }else if(!inCoroutine && !readyToSwitch){
                 readyToSwitch = true;
@@ -192,7 +193,7 @@ public class Final_Boss_Movement : MonoBehaviour {
             if(!inCoroutine && readyToSwitch){
                 inCoroutine = true;
                 readyToSwitch = false;
-                timeToDelay = 1;
+                timeToDelay = 2.5f;
                 StartCoroutine("position5MoveCo", timeToDelay);
             }else if(!inCoroutine && !readyToSwitch){
                 readyToSwitch = true;
@@ -227,7 +228,7 @@ public class Final_Boss_Movement : MonoBehaviour {
             if(!inCoroutine && readyToSwitch){
                 inCoroutine = true;
                 readyToSwitch = false;
-                timeToDelay = 1.5f;
+                timeToDelay = 2.5f;
                 StartCoroutine("position2MoveCo", timeToDelay);
             }else if(!inCoroutine && !readyToSwitch){
                 readyToSwitch = true;
@@ -279,7 +280,7 @@ public class Final_Boss_Movement : MonoBehaviour {
             if(!inCoroutine && readyToSwitch){
                 inCoroutine = true;
                 readyToSwitch = false;
-                timeToDelay = 1;
+                timeToDelay = 2.5f;
                 StartCoroutine("position3MoveCo", timeToDelay);
             }else if(!inCoroutine && !readyToSwitch){
                 readyToSwitch = true;
@@ -296,20 +297,24 @@ public class Final_Boss_Movement : MonoBehaviour {
     }
 //===[Supporting Functions]======================================================================================================================================    
 
-    void ChooseRandomStage(){
+    public void ChooseRandomStage(){
         float randomStageNum = Random.Range(1,5);
         stage = (int) randomStageNum;
         Debug.Log(stage);
+    }
+    
+    public void StartInvincibility(float duration){
+        StartCoroutine("isInvicible", duration);
     }
     
     
 //===[Collisions and Colliders]======================================================================================================================================    
     
     void OnTriggerEnter2D(Collider2D col){
-        if(col.gameObject.tag == "Player" && stage < 1){
+        /*if(col.gameObject.tag == "Player" && stage < 1){
             ChooseRandomStage();
             //stage = 1;
-        }
+        }*/
     }
     
     
@@ -360,5 +365,14 @@ public class Final_Boss_Movement : MonoBehaviour {
             yield return null;
         }
         inCoroutine = false;
+    }
+    
+//--Invincibility Coroutine
+    IEnumerator isInvicible(float duration){
+        bossManager.GetComponent<Final_Boss_manager>().isInvicible = true;
+        this.GetComponent<Animator>().SetBool("invincible", true);
+        yield return new WaitForSeconds(duration);
+        this.GetComponent<Animator>().SetBool("invincible", false);
+        bossManager.GetComponent<Final_Boss_manager>().isInvicible = false;
     }           
 }
