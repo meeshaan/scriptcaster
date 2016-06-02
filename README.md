@@ -1,6 +1,6 @@
-# spellcaster
+# Scriptcaster
 
-Spellcaster - 2d platform project
+Scriptcaster - 2d platform project
 
 Professor Boyd - CPSC 340
 
